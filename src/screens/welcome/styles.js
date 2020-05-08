@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native';
 import Colors from '@config/colors';
 import {STATUSBAR_HEIGHT} from '@config/statusbar';
-import {DEVICE_SIZE, responsivePortion, FONTS} from '@config/constants';
+import {
+  DEVICE_SIZE,
+  responsivePortion,
+  responsiveVerticalPortion,
+  FONTS,
+} from '@config/constants';
 
 export const styles = StyleSheet.create({
   container: {
@@ -39,7 +44,7 @@ export const styles = StyleSheet.create({
   },
   buttons: {
     width: '100%',
-    height: DEVICE_SIZE.WIDTH / 9,
+    height: responsiveVerticalPortion(32),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -47,7 +52,7 @@ export const styles = StyleSheet.create({
     width: (DEVICE_SIZE.CONTENT_WIDTH - 20) / 2,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: responsivePortion(2),
     borderColor: Colors.white,
     borderWidth: 1,
   },
@@ -57,7 +62,7 @@ export const styles = StyleSheet.create({
   },
   skipView: {
     position: 'absolute',
-    bottom: 25,
+    bottom: responsiveVerticalPortion(18),
     width: '100%',
     justifyContent: 'center',
   },

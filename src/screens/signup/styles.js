@@ -1,7 +1,12 @@
 import {StyleSheet} from 'react-native';
 import Colors from '@config/colors';
 import {STATUSBAR_HEIGHT} from '@config/statusbar';
-import {DEVICE_SIZE, responsivePortion, FONTS} from '@config/constants';
+import {
+  DEVICE_SIZE,
+  responsivePortion,
+  responsiveVerticalPortion,
+  FONTS,
+} from '@config/constants';
 
 export const styles = StyleSheet.create({
   titleView: {
@@ -31,17 +36,17 @@ export const styles = StyleSheet.create({
   },
   buttons: {
     width: '100%',
-    height: DEVICE_SIZE.WIDTH / 9,
+    height: responsiveVerticalPortion(32),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 20,
+    marginTop: responsiveVerticalPortion(16),
   },
   button: {
     width: (DEVICE_SIZE.CONTENT_WIDTH - 20) / 2,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: responsivePortion(2),
     borderColor: Colors.white,
     backgroundColor: Colors.white,
   },
@@ -50,9 +55,18 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 5,
+    borderRadius: responsivePortion(2),
     borderColor: Colors.white,
     backgroundColor: Colors.white,
+  },
+  nextButton: {
+    height: responsiveVerticalPortion(32),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: responsivePortion(2),
+    backgroundColor: Colors.gray,
+    marginTop: responsiveVerticalPortion(24),
   },
   buttonText: {
     fontFamily: FONTS.main,
@@ -66,8 +80,14 @@ export const styles = StyleSheet.create({
   },
   separateView: {
     flexDirection: 'row',
-    paddingVertical: 20,
+    paddingVertical: responsiveVerticalPortion(20),
     justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  descriptionView: {
+    flexDirection: 'row',
+    marginTop: responsiveVerticalPortion(8),
+    justifyContent: 'center',
     alignItems: 'center',
   },
   line: {
@@ -78,7 +98,7 @@ export const styles = StyleSheet.create({
   skipView: {
     position: 'absolute',
     width: '100%',
-    bottom: 25,
+    bottom: responsiveVerticalPortion(18),
     justifyContent: 'center',
     alignItems: 'center',
   },

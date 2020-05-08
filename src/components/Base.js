@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {Animated, StyleSheet} from 'react-native';
 import {STATUSBAR_HEIGHT} from '@config/statusbar';
 import Colors from '@config/colors';
 
-export const BaseView = ({children}) => (
-  <View style={styles.container}>{children}</View>
+export const BaseView = ({children, style}) => (
+  <Animated.View style={[styles.container, style]}>{children}</Animated.View>
 );
 
 const styles = StyleSheet.create({
