@@ -12,7 +12,6 @@ import {
 import {BaseView} from '@components/Base';
 import {LogoView} from '@components/Logo';
 import InputForm from '@components/InputForm';
-import RadioButton from '@components/RadioButton';
 import Colors from '@config/colors';
 import {responsiveVerticalPortion, DEVICE_SIZE} from '@config/constants';
 import {styles} from './styles';
@@ -22,18 +21,14 @@ const fbIcon = require('@assets/icons/facebook.png');
 const googleIcon = require('@assets/icons/google.png');
 const eyeIcon = require('@assets/icons/eye.png');
 
-class SignUp extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       step: 0,
       inputValues: {
-        firstName: '',
-        lastName: '',
         email: '',
-        password: '',
-        phone: '',
-        selectedOption: -1,
+        passwd: '',
       },
       shift: new Animated.Value(0),
       showPass: false,
@@ -81,13 +76,6 @@ class SignUp extends React.Component {
     }).start();
   };
 
-  onPressPlusStep = () => {
-    const {step} = this.state;
-    this.setState({
-      step: step + 1,
-    });
-  };
-
   onChange = (name, value) => {
     const {inputValues} = this.state;
     this.setState({
@@ -103,74 +91,26 @@ class SignUp extends React.Component {
     this.setState({showPass: !showPass});
   };
 
-  onSelectRadio = (option) => {
-    const {selectedOption} = this.state;
-    if (selectedOption === option) {
-      this.setState({selectedOption: -1});
-    } else {
-      this.setState({selectedOption: option});
-    }
+  onPressPlusStep = () => {
+    const {step} = this.state;
+    this.setState({
+      step: step + 1,
+    });
   };
 
-  onPressTerms = () => {
-    console.log('======');
-  };
-
-  onPressGoLogin = () => {
+  onPressGoSignup = () => {
     const {navigation} = this.props;
-    navigation.navigate('Login');
+    navigation.navigate('SignUp');
   };
 
-  onPressSignUp = () => {
+  onPressLogin = () => {
     const {navigation} = this.props;
-    navigation.navigate('Intro');
+    navigation.navigate('Home');
   };
 
-  renderStepOne = () => {
-    const {inputValues} = this.state;
-    const filledOut =
-      inputValues.firstName !== '' && inputValues.lastName !== '';
-    return (
-      <View>
-        <InputForm
-          label="First Name"
-          placeholder="First Name"
-          keyboardType="default"
-          returnKeyType="next"
-          autoCapitalize="words"
-          name="firstName"
-          value={inputValues.firstName}
-          onChange={this.onChange}
-        />
-        <InputForm
-          style={{marginTop: responsiveVerticalPortion(8)}}
-          label="Last Name"
-          placeholder="Last Name"
-          keyboardType="default"
-          returnKeyType="done"
-          autoCapitalize="words"
-          name="lastName"
-          value={inputValues.lastName}
-          onChange={this.onChange}
-        />
-        <TouchableOpacity
-          style={[
-            styles.nextButton,
-            {backgroundColor: filledOut ? Colors.background : Colors.disabled},
-          ]}
-          disabled={!filledOut}
-          onPress={this.onPressPlusStep}>
-          <Text style={[styles.buttonText, {color: Colors.white}]}>
-            Next Step
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  renderStepTwo = () => {
+  renderEmailPassword = () => {
     const {inputValues, showPass} = this.state;
-    const filledOut = inputValues.email !== '' && inputValues.password !== '';
+    const filledOut = inputValues.email !== '' && inputValues.passwd !== '';
     return (
       <View>
         <InputForm
@@ -190,8 +130,8 @@ class SignUp extends React.Component {
           keyboardType="default"
           returnKeyType="done"
           autoCapitalize="none"
-          name="password"
-          value={inputValues.password}
+          name="passwd"
+          value={inputValues.passwd}
           secureTextEntry={!showPass}
           icon={eyeIcon}
           iconTintColor="#00192F"
@@ -204,111 +144,8 @@ class SignUp extends React.Component {
             {backgroundColor: filledOut ? Colors.background : Colors.disabled},
           ]}
           disabled={!filledOut}
-          onPress={this.onPressPlusStep}>
-          <Text style={[styles.buttonText, {color: Colors.white}]}>
-            Next Step
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
-  };
-
-  renderStepThree = () => {
-    const {inputValues, selectedOption} = this.state;
-    const filledOut = inputValues.phone !== '' && selectedOption !== -1;
-    return (
-      <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            marginTop: responsiveVerticalPortion(-5),
-          }}>
-          <View style={styles.button}>
-            <InputForm
-              label="Phone number"
-              placeholder="Phone number"
-              keyboardType="phone-pad"
-              returnKeyType="done"
-              autoCapitalize="none"
-              name="phone"
-              value={inputValues.phone}
-              onChange={this.onChange}
-            />
-          </View>
-          <View style={[styles.button, {alignItems: 'flex-end'}]}>
-            <Text
-              style={[
-                styles.description,
-                {color: Colors.black, textAlign: 'left'},
-              ]}>
-              We will only call you if there are any issues with your future
-              purchases.
-            </Text>
-          </View>
-        </View>
-        <View style={styles.radioView}>
-          <RadioButton
-            size={responsiveVerticalPortion(16)}
-            isSelected={selectedOption === 0}
-            onPress={() => this.onSelectRadio(0)}
-          />
-          <Text style={styles.radioBoldLabel}>
-            Subscribe to our mailing list
-          </Text>
-        </View>
-        <View
-          style={[
-            styles.radioView,
-            {
-              marginTop: responsiveVerticalPortion(8),
-            },
-          ]}>
-          <View style={{paddingTop: responsiveVerticalPortion(4)}}>
-            <RadioButton
-              size={responsiveVerticalPortion(16)}
-              isSelected={selectedOption === 1}
-              onPress={() => this.onSelectRadio(1)}
-            />
-          </View>
-          <View style={{flex: 1}}>
-            <Text
-              style={[
-                styles.radioBoldLabel,
-                {color: Colors.black, fontWeight: 'normal'},
-              ]}>
-              By signing up, you confirm that you are 16 or over and agree to
-              our{' '}
-              <Text
-                style={[
-                  styles.skip,
-                  {fontWeight: 'bold', color: Colors.background},
-                ]}
-                onPress={this.onPressTerms}>
-                Terms of Use
-              </Text>{' '}
-              and{' '}
-              <Text
-                style={[
-                  styles.skip,
-                  {fontWeight: 'bold', color: Colors.background},
-                ]}
-                onPress={this.onPressPolicy}>
-                Privacy Policy.
-              </Text>
-            </Text>
-          </View>
-        </View>
-        <TouchableOpacity
-          style={[
-            styles.nextButton,
-            {backgroundColor: filledOut ? Colors.background : Colors.disabled},
-          ]}
-          disabled={!filledOut}
-          onPress={this.onPressSignUp}>
-          <Text style={[styles.buttonText, {color: Colors.white}]}>
-            Sign Up
-          </Text>
+          onPress={this.onPressLogin}>
+          <Text style={[styles.buttonText, {color: Colors.white}]}>Login</Text>
         </TouchableOpacity>
       </View>
     );
@@ -320,9 +157,9 @@ class SignUp extends React.Component {
       <BaseView style={{transform: [{translateY: shift}]}}>
         <LogoView />
         <View style={styles.titleView}>
-          <Text style={styles.title}>Sign Up</Text>
+          <Text style={styles.title}>Login</Text>
           <Text style={styles.description}>
-            Please sign up to your account using
+            Please login to your account using
           </Text>
         </View>
         <View
@@ -354,7 +191,7 @@ class SignUp extends React.Component {
                   backgroundColor: Colors.red,
                 },
               ]}
-              onPress={this.onPressSignUp}>
+              onPress={this.onPressLogin}>
               <Image
                 source={googleIcon}
                 resizeMode="contain"
@@ -380,9 +217,7 @@ class SignUp extends React.Component {
             </Text>
             <View style={[styles.line, {borderColor: Colors.gray}]} />
           </View>
-          {step === 1 && this.renderStepOne()}
-          {step === 2 && this.renderStepTwo()}
-          {step === 3 && this.renderStepThree()}
+          {step === 1 && this.renderEmailPassword()}
           {step === 0 && (
             <TouchableOpacity
               style={styles.longButton}
@@ -398,7 +233,7 @@ class SignUp extends React.Component {
                 styles.description,
                 {color: step === 0 ? Colors.white : Colors.black},
               ]}>
-              Already have an account?
+              Don`t have an account?
             </Text>
             <Text
               style={[
@@ -411,8 +246,8 @@ class SignUp extends React.Component {
                   color: step === 0 ? Colors.white : Colors.background,
                 },
               ]}
-              onPress={this.onPressGoLogin}>
-              Login
+              onPress={this.onPressGoSignup}>
+              Sign up
             </Text>
           </View>
         </View>
@@ -430,4 +265,4 @@ class SignUp extends React.Component {
   }
 }
 
-export default SignUp;
+export default Login;

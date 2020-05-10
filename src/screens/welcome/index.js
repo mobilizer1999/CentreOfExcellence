@@ -11,6 +11,11 @@ class Welcome extends React.Component {
     super(props);
   }
 
+  onPressSignIn = () => {
+    const {navigation} = this.props;
+    navigation.navigate('Login');
+  };
+
   onPressSignUp = () => {
     const {navigation} = this.props;
     navigation.navigate('SignUp');

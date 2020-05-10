@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import Colors from '@config/colors';
+import {STATUSBAR_HEIGHT} from '@config/statusbar';
 import {
   DEVICE_SIZE,
   responsivePortion,

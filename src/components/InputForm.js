@@ -1,6 +1,14 @@
 import React from 'react';
-import {View, Text, TextInput, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import PropTypes from 'prop-types';
+import * as Progress from 'react-native-progress';
 import Colors from '@config/colors';
 import {
   responsivePortion,
@@ -32,7 +40,6 @@ export default class InputForm extends React.Component {
       iconTintColor,
       onPressIcon,
     } = this.props;
-    console.log('========: ',secureTextEntry)
     const {focused} = this.state;
     return (
       <View style={[styles.container, style]}>
@@ -43,7 +50,17 @@ export default class InputForm extends React.Component {
             {borderColor: focused ? Colors.background : Colors.gray},
           ]}>
           <TextInput
-            style={styles.input}
+            style={[
+              styles.input,
+              {
+                letterSpacing:
+                  (name === 'password' || name === 'passwd') &&
+                  value !== '' &&
+                  secureTextEntry
+                    ? responsivePortion(5)
+                    : responsivePortion(0.33),
+              },
+            ]}
             value={value}
             placeholder={placeholder}
             placeholderTextColor={Colors.gray}
@@ -73,6 +90,21 @@ export default class InputForm extends React.Component {
             </TouchableOpacity>
           )}
         </View>
+        {name === 'password' && value !== '' && focused && (
+          <View style={[styles.inputView, {borderTopWidth: 0}]}>
+            <Text style={styles.subText}>Weak</Text>
+            <View style={styles.progress}>
+              <Progress.Bar
+                progress={0.4}
+                width={null}
+                height={responsiveVerticalPortion(8)}
+                color={Colors.red}
+                unfilledColor="#EFF3F6"
+                borderWidth={0}
+              />
+            </View>
+          </View>
+        )}
       </View>
     );
   }
@@ -115,21 +147,33 @@ const styles = StyleSheet.create({
     marginBottom: responsiveVerticalPortion(5),
   },
   inputView: {
+    height: responsiveVerticalPortion(32),
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingHorizontal: responsivePortion(16),
     alignItems: 'center',
     borderWidth: 1,
+    borderColor: Colors.background,
   },
   input: {
     flex: 1,
-    height: responsiveVerticalPortion(32),
+    height: '100%',
     fontFamily: FONTS.main,
     fontSize: responsivePortion(14),
     fontWeight: 'normal',
     color: Colors.black,
     letterSpacing: responsivePortion(0.33),
-    paddingHorizontal: responsivePortion(16),
     borderColor: Colors.gray,
+  },
+  subText: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(14),
+    color: Colors.black,
+    letterSpacing: responsivePortion(0.33),
+  },
+  progress: {
+    flex: 1,
+    marginLeft: responsivePortion(7),
   },
   icon: {
     width: responsivePortion(16),

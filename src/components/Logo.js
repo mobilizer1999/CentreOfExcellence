@@ -7,7 +7,7 @@ const logoImg = require('@assets/logo/logo.png');
 
 export const LogoView = () => (
   <View style={styles.container}>
-    <Image source={logoImg} style={styles.logo} resizeMode="cover" />
+    <Image source={logoImg} style={styles.logo} resizeMode="contain" />
   </View>
 );
 
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: DEVICE_SIZE.WIDTH / 5,
+    width: DEVICE_SIZE.WIDTH / 3.5,
     height: DEVICE_SIZE.HEIGHT / 7,
   },
 });
