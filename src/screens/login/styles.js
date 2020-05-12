@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(28),
+    fontSize: responsivePortion(24),
     fontWeight: 'bold',
     letterSpacing: 1,
     color: Colors.white,
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   description: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     letterSpacing: 0.5,
     textAlign: 'center',
@@ -70,12 +70,12 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(15),
+    fontSize: responsivePortion(12),
     color: Colors.white,
   },
   icon: {
-    width: 22,
-    height: 22,
+    width: responsivePortion(16),
+    height: responsivePortion(16),
     marginRight: 10,
   },
   separateView: {
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
   },
   skip: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     textAlign: 'center',
     textDecorationLine: 'underline',
@@ -115,7 +115,7 @@ export const styles = StyleSheet.create({
   },
   radioBoldLabel: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     fontWeight: 'bold',
     color: Colors.black,
     letterSpacing: responsivePortion(0.33),

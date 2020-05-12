@@ -7,6 +7,10 @@ const Colors = {
   red: '#DE4B39',
   gray: '#DEDEDE',
   disabled: '#C7C7C7',
+  yellow: '#FFBD00',
+  green100: '#DDEDD1',
+  green: '#3E8F00',
+  orange: '#FF7100',
 };
 
 export default Colors;

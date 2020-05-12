@@ -30,18 +30,18 @@ export const styles = StyleSheet.create({
   },
   closeText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     marginLeft: responsivePortion(5),
   },
   icon: {
-    width: responsivePortion(24),
-    height: responsivePortion(24),
+    width: responsivePortion(13),
+    height: responsivePortion(13),
     tintColor: Colors.white,
   },
   logo: {
-    width: responsivePortion(60),
-    height: responsivePortion(48),
+    width: responsivePortion(45),
+    height: responsivePortion(40),
   },
   scrollView: {
     flex: 1,
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
   },
   boldText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(20),
+    fontSize: responsivePortion(14),
     fontWeight: 'bold',
     color: Colors.white,
     marginRight: responsivePortion(5),
@@ -75,8 +75,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   currencyDropDown: {
-    width: responsivePortion(120),
-    height: '100%',
+    width: responsivePortion(90),
+    height: responsiveVerticalPortion(32),
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,

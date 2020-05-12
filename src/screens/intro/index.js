@@ -16,8 +16,8 @@ const certImg = require('@assets/logo/certified.png');
 const soldImg = require('@assets/logo/sold.png');
 const smileImg = require('@assets/logo/smiley.png');
 const paymentImg = require('@assets/logo/credit.png');
-const prevIcon = require('@assets/icons/back.png');
-const nextIcon = require('@assets/icons/back.png');
+const prevIcon = require('@assets/icons/prev.png');
+const nextIcon = require('@assets/icons/next.png');
 
 const introSlider = [
   {

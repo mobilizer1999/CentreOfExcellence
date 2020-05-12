@@ -8,8 +8,8 @@ import {
   InteractionManager,
   Animated,
 } from 'react-native';
-
 import PropTypes from 'prop-types';
+import {responsivePortion} from '@config/constants';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   icons: {
-    width: 20,
-    height: 20,
+    width: responsivePortion(11),
+    height: responsivePortion(7),
   },
   underline: {
     width: '100%',

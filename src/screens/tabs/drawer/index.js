@@ -4,38 +4,27 @@ import DropDownItem from '@components/DropDownItem';
 import PickerField from '@components/PickerField';
 import {styles} from './styles';
 import {responsivePortion, responsiveVerticalPortion} from '@config/constants';
-import Colors from '@config/colors';
+import ICONS from '@config/icons';
 
-const closeIcon = require('@assets/icons/cancel.png');
-const downIcon = require('@assets/icons/down.png');
 const logoImg = require('@assets/logo/logo.png');
-const facebookIcon = require('@assets/icons/facebook.png');
 const avatarImg = require('@assets/profile/avatar.png');
 
 const socialIcons = [
-  facebookIcon,
-  facebookIcon,
-  facebookIcon,
-  facebookIcon,
-  facebookIcon,
+  ICONS.SOCIAL_FB,
+  ICONS.SOCIAL_TW,
+  ICONS.SOCIAL_INSTA,
+  ICONS.SOCIAL_YOU,
+  ICONS.SOCIAL_IN,
 ];
 
 const currencies = [
   {
     label: 'GBP  £',
-    value: 'GBP  £',
+    value: 0,
   },
   {
     label: 'USD $',
-    value: 'USD $',
-  },
-  {
-    label: 'GBP  £',
-    value: 'GBP  £',
-  },
-  {
-    label: 'USD $',
-    value: 'USD $',
+    value: 1,
   },
 ];
 
@@ -45,19 +34,99 @@ const dropDownData = [
     items: [
       {
         name: 'Aromatherapy',
-        icon: closeIcon,
+        icon: ICONS.AROMA,
       },
       {
         name: 'Reflexology',
-        icon: closeIcon,
+        icon: ICONS.REFLEXOLOGY,
       },
       {
         name: 'Energy Healing',
-        icon: closeIcon,
+        icon: ICONS.ENERGY,
       },
       {
-        name: 'Message',
-        icon: closeIcon,
+        name: 'Massage',
+        icon: ICONS.MASSAGE,
+      },
+      {
+        name: 'Autism & Special Needs',
+        icon: ICONS.AUTISM,
+      },
+      {
+        name: 'Reiki',
+        icon: ICONS.REIKI,
+      },
+      {
+        name: 'Life Coaching',
+        icon: ICONS.COACHING,
+      },
+      {
+        name: 'CBT: Coginitive Behavioural',
+        icon: ICONS.COGNITIVE,
+      },
+      {
+        name: 'Mindfullness',
+        icon: ICONS.COGNITIVE,
+      },
+      {
+        name: 'Psychic & Supernatural',
+        icon: ICONS.SUPERNATURAL,
+      },
+      {
+        name: 'Beauty Therapy',
+        icon: ICONS.BEAUTY,
+      },
+      {
+        name: 'Holistic Therapy',
+        icon: ICONS.LOVE,
+      },
+      {
+        name: 'Counselling',
+        icon: ICONS.COUNSELLING,
+      },
+      {
+        name: 'Psychology',
+        icon: ICONS.PSYCHOLOGY,
+      },
+      {
+        name: 'Diet & Nutrition',
+        icon: ICONS.DIET,
+      },
+      {
+        name: 'Nuero Linguistics',
+        icon: ICONS.NUERO,
+      },
+      {
+        name: 'Hypnotherapy',
+        icon: ICONS.EYE,
+      },
+      {
+        name: 'Animal Care',
+        icon: ICONS.ANIMAL,
+      },
+      {
+        name: 'Hobby & Craft',
+        icon: ICONS.HOBBY,
+      },
+      {
+        name: 'Writing',
+        icon: ICONS.EDIT,
+      },
+      {
+        name: 'Fitness & Wellbeing',
+        icon: ICONS.FITNESS,
+      },
+      {
+        name: 'Business, Marketing & PR',
+        icon: ICONS.BUSINESS,
+      },
+      {
+        name: 'History',
+        icon: ICONS.HISTORY,
+      },
+      {
+        name: 'Audio Books',
+        icon: ICONS.AUDIO,
       },
     ],
     expanded: false,
@@ -66,42 +135,12 @@ const dropDownData = [
     title: 'My Courses',
     items: [
       {
-        name: 'Aromatherapy',
-        icon: closeIcon,
+        name: 'Audio Downloads',
+        icon: null,
       },
       {
-        name: 'Reflexology',
-        icon: closeIcon,
-      },
-      {
-        name: 'Energy Healing',
-        icon: closeIcon,
-      },
-      {
-        name: 'Message',
-        icon: closeIcon,
-      },
-    ],
-    expanded: false,
-  },
-  {
-    title: 'General Settings',
-    items: [
-      {
-        name: 'Aromatherapy',
-        icon: closeIcon,
-      },
-      {
-        name: 'Reflexology',
-        icon: closeIcon,
-      },
-      {
-        name: 'Energy Healing',
-        icon: closeIcon,
-      },
-      {
-        name: 'Message',
-        icon: closeIcon,
+        name: 'Courses',
+        icon: null,
       },
     ],
     expanded: false,
@@ -110,20 +149,28 @@ const dropDownData = [
     title: 'Explore CoE',
     items: [
       {
-        name: 'Aromatherapy',
-        icon: closeIcon,
+        name: 'About CoE',
+        icon: null,
       },
       {
-        name: 'Reflexology',
-        icon: closeIcon,
+        name: 'Blog',
+        icon: null,
       },
       {
-        name: 'Energy Healing',
-        icon: closeIcon,
+        name: 'CoE Awards',
+        icon: null,
       },
       {
-        name: 'Message',
-        icon: closeIcon,
+        name: 'Careers',
+        icon: null,
+      },
+      {
+        name: 'Contact',
+        icon: null,
+      },
+      {
+        name: 'Support',
+        icon: null,
       },
     ],
     expanded: false,
@@ -135,7 +182,7 @@ class Drawer extends React.Component {
     super(props);
     this.state = {
       categoryData: [],
-      selectedCurrency: '',
+      selectedCurrency: 0,
     };
   }
 
@@ -169,7 +216,7 @@ class Drawer extends React.Component {
         <View style={styles.navigationView}>
           <TouchableOpacity style={styles.rowView} onPress={this.onCloseDrawer}>
             <Image
-              source={closeIcon}
+              source={ICONS.CLOSE}
               resizeMode="contain"
               style={styles.icon}
             />
@@ -187,8 +234,8 @@ class Drawer extends React.Component {
                       <DropDownItem
                         key={index}
                         headerStyle={styles.rowView}
-                        invisibleImage={downIcon}
-                        visibleImage={downIcon}
+                        invisibleImage={ICONS.DOWN}
+                        visibleImage={ICONS.UP}
                         header={
                           <View style={styles.category}>
                             <Text style={styles.boldText}>{item.title}</Text>
@@ -199,12 +246,29 @@ class Drawer extends React.Component {
                             <TouchableOpacity
                               key={subindex}
                               style={styles.subItemView}>
-                              <Image
-                                source={subitem.icon}
-                                resizeMode="contain"
-                                style={styles.icon}
-                              />
-                              <Text style={styles.closeText}>
+                              {subitem.icon && (
+                                <Image
+                                  source={subitem.icon}
+                                  resizeMode="contain"
+                                  style={[
+                                    styles.icon,
+                                    {
+                                      width: responsivePortion(18),
+                                      height: responsivePortion(18),
+                                    },
+                                  ]}
+                                />
+                              )}
+                              <Text
+                                style={[
+                                  styles.closeText,
+                                  {
+                                    fontSize: responsivePortion(12),
+                                    marginLeft: subitem.icon
+                                      ? responsivePortion(17)
+                                      : 0,
+                                  },
+                                ]}>
                                 {subitem.name}
                               </Text>
                             </TouchableOpacity>
@@ -220,16 +284,29 @@ class Drawer extends React.Component {
               </View>
               <View style={styles.categoryView}>
                 <TouchableOpacity style={styles.category}>
-                  <Text style={styles.closeText}>My Orders</Text>
+                  <Text
+                    style={[
+                      styles.closeText,
+                      {fontSize: responsivePortion(12)},
+                    ]}>
+                    My Orders
+                  </Text>
                 </TouchableOpacity>
                 <View
                   style={[styles.rowView, {justifyContent: 'space-between'}]}>
                   <TouchableOpacity style={styles.category}>
-                    <Text style={styles.closeText}>Currency</Text>
+                    <Text
+                      style={[
+                        styles.closeText,
+                        {fontSize: responsivePortion(12)},
+                      ]}>
+                      Currency
+                    </Text>
                   </TouchableOpacity>
                   <PickerField
                     style={styles.currencyDropDown}
                     data={currencies}
+                    width={responsivePortion(100)}
                     value={selectedCurrency}
                     onValueChange={(value) => {
                       this.setState({selectedCurrency: value});
@@ -237,7 +314,13 @@ class Drawer extends React.Component {
                   />
                 </View>
                 <TouchableOpacity style={[styles.category, {marginBottom: 0}]}>
-                  <Text style={styles.closeText}>Settings</Text>
+                  <Text
+                    style={[
+                      styles.closeText,
+                      {fontSize: responsivePortion(12)},
+                    ]}>
+                    Settings
+                  </Text>
                 </TouchableOpacity>
               </View>
               <View style={[styles.categoryView, {borderBottomWidth: 0}]}>
@@ -261,7 +344,13 @@ class Drawer extends React.Component {
                       <Image
                         source={icon}
                         resizeMode="contain"
-                        style={styles.icon}
+                        style={[
+                          styles.icon,
+                          {
+                            width: responsivePortion(17),
+                            height: responsivePortion(17),
+                          },
+                        ]}
                       />
                     </TouchableOpacity>
                   ))}
@@ -287,7 +376,10 @@ class Drawer extends React.Component {
                 </View>
               </View>
               <View style={styles.versionView}>
-                <Text style={styles.closeText}>Version 1.0</Text>
+                <Text
+                  style={[styles.closeText, {fontSize: responsivePortion(8)}]}>
+                  Version 1.0
+                </Text>
               </View>
             </View>
           </ScrollView>

@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     fontWeight: 'bold',
     color: Colors.black,
     letterSpacing: responsivePortion(0.33),
@@ -159,7 +159,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     fontWeight: 'normal',
     color: Colors.black,
     letterSpacing: responsivePortion(0.33),
@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   subText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.black,
     letterSpacing: responsivePortion(0.33),
   },
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: responsivePortion(16),
-    height: responsiveVerticalPortion(15),
+    height: responsivePortion(15),
     margin: 3,
   },
 });

@@ -8,10 +8,9 @@ import {
   DEVICE_SIZE,
   FONTS,
 } from '@config/constants';
+import ICONS from '@config/icons';
 
 const logoImg = require('@assets/logo/logo.png');
-const menuIcon = require('@assets/icons/menu.png');
-const searchIcon = require('@assets/icons/search.png');
 
 export default class HeaderView extends React.Component {
   constructor(props) {
@@ -27,15 +26,27 @@ export default class HeaderView extends React.Component {
       <View style={[styles.container, {style}]}>
         <View style={styles.menuView}>
           <TouchableOpacity onPress={onPressMenu}>
-            <Image source={menuIcon} resizeMode="contain" style={styles.icon} />
+            <Image
+              source={ICONS.MENU}
+              resizeMode="contain"
+              style={styles.icon}
+            />
           </TouchableOpacity>
           <Text style={styles.label}>Explorer</Text>
         </View>
         <Image source={logoImg} resizeMode="contain" style={styles.logo} />
         <View style={styles.menuView}>
+          <TouchableOpacity style={styles.ringIcon}>
+            <View style={styles.noti} />
+            <Image
+              source={ICONS.RING}
+              resizeMode="contain"
+              style={styles.icon}
+            />
+          </TouchableOpacity>
           <TouchableOpacity>
             <Image
-              source={searchIcon}
+              source={ICONS.SEARCH}
               resizeMode="contain"
               style={styles.icon}
             />
@@ -74,17 +85,30 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: (DEVICE_SIZE.WIDTH - responsivePortion(60)) / 2,
     width: responsivePortion(60),
-    height: responsivePortion(48),
+    height: responsivePortion(40),
   },
   icon: {
-    width: responsivePortion(22),
-    height: responsivePortion(22),
+    width: responsivePortion(16),
+    height: responsivePortion(16),
     tintColor: Colors.white,
     padding: 5,
   },
+  ringIcon: {
+    marginRight: responsivePortion(20),
+  },
+  noti: {
+    position: 'absolute',
+    top: responsivePortion(-4),
+    right: responsivePortion(-2),
+    width: responsivePortion(8),
+    height: responsivePortion(8),
+    borderRadius: responsivePortion(4),
+    backgroundColor: Colors.red,
+    zIndex: 1,
+  },
   label: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     fontWeight: '600',
     color: Colors.white,
     marginLeft: responsivePortion(8),

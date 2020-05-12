@@ -2,31 +2,28 @@ import React from 'react';
 import {View, TouchableHighlight, Image, Text, StyleSheet} from 'react-native';
 import Colors from '@config/colors';
 import {responsivePortion, FONTS} from '@config/constants';
-
-const tvIcon = require('@assets/icons/facebook.png');
-const mapIcon = require('@assets/icons/google.png');
-const userIcon = require('@assets/icons/back.png');
+import ICONS from '@config/icons';
 
 const iconMap = {
   Home: {
     label: 'Home',
-    icon: tvIcon,
+    icon: ICONS.HOME_TAB,
   },
   Wishlist: {
     label: 'Wishlist',
-    icon: mapIcon,
+    icon: ICONS.LOVE_TAB,
   },
   MyCourses: {
     label: 'My Courses',
-    icon: userIcon,
+    icon: ICONS.COURSE_TAB,
   },
   Messages: {
     label: 'Messages',
-    icon: userIcon,
+    icon: ICONS.MESSAGE_TAB,
   },
   Accounts: {
     label: 'Accounts',
-    icon: userIcon,
+    icon: ICONS.USER_TAB,
   },
 };
 
@@ -45,9 +42,9 @@ export default function TabBarButton({routeName, onPress, focused}) {
           resizeMode="contain"
           style={styles.icon}
         />
-        {focused && (
-          <Text style={styles.label}>{iconMap[routeName].label}</Text>
-        )}
+        {/* {focused && ( */}
+        <Text style={styles.label}>{iconMap[routeName].label}</Text>
+        {/* )} */}
       </View>
     </TouchableHighlight>
   );
@@ -62,13 +59,13 @@ const styles = StyleSheet.create({
     marginTop: -1,
   },
   icon: {
-    width: responsivePortion(18),
-    height: responsivePortion(18),
+    width: responsivePortion(16),
+    height: responsivePortion(12),
     tintColor: Colors.white,
   },
   label: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(13),
+    fontSize: responsivePortion(8),
     fontWeight: '600',
     color: Colors.white,
     marginTop: 2,

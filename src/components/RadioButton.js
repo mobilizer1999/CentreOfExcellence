@@ -16,7 +16,7 @@ export default class RadioButton extends Component {
   static defaultProps = {
     size: 16,
     innerColor: Colors.background,
-    outerColor: Colors.gray,
+    outerColor: Colors.disabled,
     isSelected: false,
     onPress: () => null,
   };

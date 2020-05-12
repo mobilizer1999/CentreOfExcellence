@@ -13,7 +13,11 @@ import {BaseView} from '@components/Base';
 import {LogoView} from '@components/Logo';
 import InputForm from '@components/InputForm';
 import Colors from '@config/colors';
-import {responsiveVerticalPortion, DEVICE_SIZE} from '@config/constants';
+import {
+  responsiveVerticalPortion,
+  responsivePortion,
+  DEVICE_SIZE,
+} from '@config/constants';
 import {styles} from './styles';
 
 const {State: TextInputState} = TextInput;
@@ -134,7 +138,7 @@ class Login extends React.Component {
           value={inputValues.passwd}
           secureTextEntry={!showPass}
           icon={eyeIcon}
-          iconTintColor="#00192F"
+          iconTintColor={Colors.black}
           onPressIcon={this.onShowHidePass}
           onChange={this.onChange}
         />
@@ -177,7 +181,14 @@ class Login extends React.Component {
                 },
               ]}
               onPress={this.onPressSignIn}>
-              <Image source={fbIcon} resizeMode="contain" style={styles.icon} />
+              <Image
+                source={fbIcon}
+                resizeMode="contain"
+                style={[
+                  styles.icon,
+                  {width: responsivePortion(20), height: responsivePortion(20)},
+                ]}
+              />
               <Text style={[styles.buttonText, {color: Colors.background}]}>
                 Facebook
               </Text>

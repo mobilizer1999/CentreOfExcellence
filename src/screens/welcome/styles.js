@@ -20,19 +20,19 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   content: {
-    flex: 0.5,
+    flex: 0.55,
     justifyContent: 'space-between',
   },
   description: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     letterSpacing: 1,
     textAlign: 'center',
   },
   welcome: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(28),
+    fontSize: responsivePortion(24),
     fontWeight: 'bold',
     letterSpacing: 1,
     color: Colors.white,
@@ -58,7 +58,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(15),
+    fontSize: responsivePortion(12),
   },
   skipView: {
     position: 'absolute',
@@ -68,7 +68,7 @@ export const styles = StyleSheet.create({
   },
   skip: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     textAlign: 'center',
     textDecorationLine: 'underline',

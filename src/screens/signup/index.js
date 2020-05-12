@@ -14,7 +14,11 @@ import {LogoView} from '@components/Logo';
 import InputForm from '@components/InputForm';
 import RadioButton from '@components/RadioButton';
 import Colors from '@config/colors';
-import {responsiveVerticalPortion, DEVICE_SIZE} from '@config/constants';
+import {
+  responsiveVerticalPortion,
+  responsivePortion,
+  DEVICE_SIZE,
+} from '@config/constants';
 import {styles} from './styles';
 
 const {State: TextInputState} = TextInput;
@@ -340,7 +344,14 @@ class SignUp extends React.Component {
                 },
               ]}
               onPress={this.onPressSignIn}>
-              <Image source={fbIcon} resizeMode="contain" style={styles.icon} />
+              <Image
+                source={fbIcon}
+                resizeMode="contain"
+                style={[
+                  styles.icon,
+                  {width: responsivePortion(20), height: responsivePortion(20)},
+                ]}
+              />
               <Text style={[styles.buttonText, {color: Colors.background}]}>
                 Facebook
               </Text>

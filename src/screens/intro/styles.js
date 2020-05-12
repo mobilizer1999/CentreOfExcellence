@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(28),
+    fontSize: responsivePortion(24),
     fontWeight: 'bold',
     letterSpacing: 1,
     color: Colors.white,
@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
   },
   description: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(14),
+    fontSize: responsivePortion(10),
     color: Colors.white,
     letterSpacing: 0.5,
     textAlign: 'center',
@@ -84,7 +84,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontFamily: FONTS.main,
-    fontSize: responsivePortion(15),
+    fontSize: responsivePortion(12),
     color: Colors.white,
   },
 });

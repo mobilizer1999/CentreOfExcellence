@@ -14,6 +14,10 @@ import Intro from '@screens/intro';
 
 import Home from '@screens/tabs/home';
 import Drawer from '@screens/tabs/drawer';
+import CourseDetails from '@screens/tabs/home/coursedetails';
+import AudioCourse from '@screens/tabs/home/audio';
+import Course from '@screens/tabs/home/course';
+
 import Wishlist from '@screens/tabs/wishlist';
 import MyCourses from '@screens/tabs/mycourses';
 import Messages from '@screens/tabs/messages';
@@ -27,10 +31,45 @@ const StackNavigatorOptions = {
   },
 };
 
-const BottomTabs = createBottomTabNavigator(
+const HomeStack = createStackNavigator(
   {
     Home: {
       screen: Home,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    AudioCourse: {
+      screen: AudioCourse,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    Course: {
+      screen: Course,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    CourseDetails: {
+      screen: CourseDetails,
+      navigationOptions: () => ({
+        headerShown: false,
+      }),
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      ...TransitionPresets.SlideFromRightIOS,
+    },
+  },
+);
+
+const BottomTabs = createBottomTabNavigator(
+  {
+    Home: {
+      screen: HomeStack,
     },
     Wishlist: {
       screen: Wishlist,
@@ -59,6 +98,7 @@ const BottomTabs = createBottomTabNavigator(
       tabStyle: {
         paddingVertical: 5,
       },
+      safeAreaInset: {bottom: 'never', top: 'never'},
     },
   },
 );
