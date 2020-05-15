@@ -15,11 +15,14 @@ import Intro from '@screens/intro';
 import Home from '@screens/tabs/home';
 import Drawer from '@screens/tabs/drawer';
 import CourseDetails from '@screens/tabs/home/coursedetails';
+import AudioDetails from '@screens/tabs/home/audiodetails';
 import AudioCourse from '@screens/tabs/home/audio';
 import Course from '@screens/tabs/home/course';
 
 import Wishlist from '@screens/tabs/wishlist';
 import MyCourses from '@screens/tabs/mycourses';
+import CourseOverview from '@screens/tabs/mycourses/courseoverview';
+import Assessment from '@screens/tabs/mycourses/assessment';
 import Messages from '@screens/tabs/messages';
 import Accounts from '@screens/tabs/accounts';
 
@@ -57,9 +60,44 @@ const HomeStack = createStackNavigator(
         headerShown: false,
       }),
     },
+    AudioDetails: {
+      screen: AudioDetails,
+      navigationOptions: () => ({
+        headerShown: false,
+      }),
+    },
   },
   {
     initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      ...TransitionPresets.SlideFromRightIOS,
+    },
+  },
+);
+
+const MyCoursesStack = createStackNavigator(
+  {
+    MyCourses: {
+      screen: MyCourses,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    CourseOverview: {
+      screen: CourseOverview,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    Assessment: {
+      screen: Assessment,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+  },
+  {
+    initialRouteName: 'MyCourses',
     defaultNavigationOptions: {
       ...TransitionPresets.SlideFromRightIOS,
     },
@@ -75,7 +113,7 @@ const BottomTabs = createBottomTabNavigator(
       screen: Wishlist,
     },
     MyCourses: {
-      screen: MyCourses,
+      screen: MyCoursesStack,
     },
     Messages: {
       screen: Messages,

@@ -10,7 +10,7 @@ class StarView extends React.Component {
   }
 
   renderStars = () => {
-    const {rating} = this.props;
+    const {rating, starColor, unstarColor, starStyle} = this.props;
     const stars = [];
     const nostars = [];
     for (let i = 0; i < 5; i++) {
@@ -30,7 +30,17 @@ class StarView extends React.Component {
         resizeMode="contain"
         style={[
           styles.icon,
-          {tintColor: index < rating ? Colors.yellow : Colors.white},
+          starStyle,
+          {
+            tintColor:
+              index < rating
+                ? starColor
+                  ? starColor
+                  : Colors.yellow
+                : unstarColor
+                ? unstarColor
+                : Colors.white,
+          },
         ]}
       />
     ));
@@ -41,7 +51,7 @@ class StarView extends React.Component {
     return (
       <View style={[styles.container, style]}>
         {this.renderStars()}
-        <Text style={styles.text}>{`${rating}.0 (${users})`}</Text>
+        {!!users && <Text style={styles.text}>{`${rating}.0 (${users})`}</Text>}
       </View>
     );
   }

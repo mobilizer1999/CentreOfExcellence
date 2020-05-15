@@ -15,6 +15,7 @@ import {BaseView} from '@components/Base';
 import HeaderView from '@components/HeaderView';
 import {ModalView} from '@components/Modal';
 import ImageView from '@components/ImageView';
+import AudioPlayer from '@components/AudioPlayer';
 import StarView from '@components/Star';
 import DropDownItem from '@components/DropDownItem';
 import {CourseItem} from '@components/CourseItem';
@@ -403,7 +404,7 @@ const courseSyllabus = [
   },
 ];
 
-class CourseDetails extends React.Component {
+class AudioDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -458,7 +459,7 @@ class CourseDetails extends React.Component {
     this.setState({modalVisible: !modalVisible});
   };
 
-  onPressStartCourse = () => {
+  onPressStartListening = () => {
     const {navigation} = this.props;
     navigation.navigate('CourseOverview');
   };
@@ -484,6 +485,28 @@ class CourseDetails extends React.Component {
           activityIndicatorProps={{size: 'small'}}
           source={dummyImg}
         />
+        <View style={styles.audioMaskView} />
+        <Image
+          source={ICONS.EARPHONE}
+          resizeMode="contain"
+          style={styles.earphoneIcon}
+        />
+        <View style={styles.audioHeaderView}>
+          <Text
+            style={[
+              styles.normalText,
+              {letterSpacing: responsivePortion(1.5)},
+            ]}>
+            AUDIO
+          </Text>
+          <Text
+            style={[
+              styles.normalText,
+              {letterSpacing: responsivePortion(1.5)},
+            ]}>
+            COURSE
+          </Text>
+        </View>
       </View>
     );
   };
@@ -502,7 +525,7 @@ class CourseDetails extends React.Component {
             },
           ]}
           numberOfLines={3}>
-          Advanced Reflexology Diploma Course
+          Advanced Reflexology Audio Course
         </Text>
 
         <Text
@@ -513,71 +536,31 @@ class CourseDetails extends React.Component {
             },
           ]}>
           Progress your reflexology skills and develop your practice, with the
-          Advanced Reflexology Diploma Course.
+          Advanced Reflexology Audio Course.
         </Text>
         {!isPurchased && (
           <View style={[styles.rowView, {marginTop: responsivePortion(20)}]}>
-            <View>
-              <View style={styles.rowView}>
-                <Text
-                  style={[
-                    styles.courseNormalText,
-                    {color: '#000000', fontWeight: 'bold'},
-                  ]}>
-                  Was £421
-                </Text>
-                <View style={styles.tagView}>
-                  <Text
-                    style={[
-                      styles.courseNormalText,
-                      {
-                        fontWeight: 'bold',
-                        color: Colors.green,
-                      },
-                    ]}>
-                    {`50% OFF`}
-                  </Text>
-                </View>
-              </View>
-              <Text
-                style={[
-                  styles.largeText,
-                  {fontSize: responsivePortion(34), color: Colors.black},
-                ]}>
-                £147.00
-              </Text>
-            </View>
-            <View style={styles.timerView}>
-              <Image
-                source={ICONS.TIMER}
-                resizeMode="contain"
-                style={styles.timerIcon}
-              />
-              <View>
-                <Text
-                  style={[
-                    styles.courseNormalText,
-                    {color: Colors.orange, fontWeight: 'bold'},
-                  ]}>
-                  12 HRS
-                </Text>
-                <Text style={[styles.courseNormalText, {color: Colors.orange}]}>
-                  left at this price
-                </Text>
-              </View>
-            </View>
+            <Text
+              style={[
+                styles.largeText,
+                {fontSize: responsivePortion(34), color: Colors.black},
+              ]}>
+              £10.00
+            </Text>
           </View>
         )}
-        <View style={[styles.rowView, {marginTop: responsivePortion(32)}]}>
+        <View style={[styles.rowView, {marginTop: responsivePortion(28)}]}>
           <TouchableOpacity
             style={[
               styles.courseBuyButton,
               {backgroundColor: isPurchased ? Colors.blue : Colors.green},
             ]}
-            onPress={isPurchased ? this.onPressStartCourse : this.onShowModal}>
+            onPress={
+              isPurchased ? this.onPressStartListening : this.onShowModal
+            }>
             <Text
               style={[styles.normalText, {fontSize: responsivePortion(12)}]}>
-              {isPurchased ? 'Start Course' : 'Buy this course'}
+              {isPurchased ? 'Start Listening' : 'Buy this course'}
             </Text>
           </TouchableOpacity>
           {!isPurchased && (
@@ -715,84 +698,28 @@ class CourseDetails extends React.Component {
                 {
                   justifyContent: 'space-between',
                   height: responsivePortion(36),
+                  marginLeft: responsivePortion(7),
                 },
               ]}>
               <View>
-                <View
-                  style={[styles.rowView, {justifyContent: 'space-between'}]}>
-                  <View
-                    style={[
-                      styles.tagView,
-                      {paddingVertical: 0, paddingHorizontal: 2},
-                    ]}>
-                    <Text
-                      style={[
-                        styles.courseNormalText,
-                        {
-                          fontSize: responsivePortion(6),
-                          fontWeight: 'bold',
-                          color: Colors.green,
-                        },
-                      ]}>
-                      {`50% OFF`}
-                    </Text>
-                  </View>
-                  <Text
-                    style={[
-                      styles.courseNormalText,
-                      {
-                        color: '#000000',
-                        fontWeight: 'bold',
-                        fontSize: responsivePortion(8),
-                        marginLeft: responsivePortion(8),
-                      },
-                    ]}>
-                    Was £421
-                  </Text>
-                </View>
                 <Text
                   style={[
                     styles.largeText,
                     {fontSize: responsivePortion(20), color: Colors.black},
                   ]}>
-                  £147.00
-                </Text>
-              </View>
-              <View
-                style={{
-                  width: responsivePortion(88),
-                  marginLeft: responsivePortion(11),
-                }}>
-                <Text
-                  style={[
-                    styles.normalText,
-                    {fontSize: responsivePortion(9), color: Colors.blue},
-                  ]}>
-                  Finance this
-                </Text>
-                <Text
-                  style={[
-                    styles.normalText,
-                    {fontSize: responsivePortion(9), color: Colors.blue},
-                  ]}>
-                  course
-                </Text>
-                <Text
-                  style={[
-                    styles.normalText,
-                    {fontSize: responsivePortion(8), color: Colors.blue},
-                  ]}>
-                  £29.00 deposit
+                  £10.00
                 </Text>
               </View>
             </View>
             <TouchableOpacity
-              style={[
-                styles.courseBuyButton,
-                {
-                  height: responsivePortion(36),
-                },
-              ]}
+              style={{
+                height: responsivePortion(36),
+                width: responsivePortion(120),
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: Colors.green,
+                borderRadius: responsivePortion(1.8),
+              }}
               onPress={this.onShowModal}>
               <Text
                 style={[styles.normalText, {fontSize: responsivePortion(12)}]}>
@@ -1256,8 +1183,62 @@ class CourseDetails extends React.Component {
           style={[
             styles.searchView,
             {
-              backgroundColor: Colors.white,
               marginTop: 0,
+            },
+          ]}>
+          <Text
+            style={[
+              styles.courseNormalText,
+              {
+                fontWeight: 'bold',
+                fontSize: responsivePortion(14),
+                letterSpacing: responsivePortion(0.1),
+              },
+            ]}>
+            Listen to a sample
+          </Text>
+          <View style={[styles.imageView, {marginTop: responsivePortion(16)}]}>
+            <ImageView
+              imageStyle={styles.subjectImage}
+              activityIndicatorProps={{size: 'small'}}
+              source={dummyImg}
+            />
+            <View
+              style={[styles.audioMaskView, {width: responsivePortion(136)}]}
+            />
+            <Image
+              source={ICONS.EARPHONE}
+              resizeMode="contain"
+              style={[
+                styles.earphoneIcon,
+                {
+                  top: responsiveVerticalPortion(48),
+                  right: responsivePortion(90),
+                },
+              ]}
+            />
+            <Text
+              style={[
+                styles.normalText,
+                {
+                  letterSpacing: responsivePortion(1.5),
+                  position: 'absolute',
+                  top: responsiveVerticalPortion(74),
+                  right: responsivePortion(16),
+                  width: responsivePortion(96),
+                },
+              ]}>
+              AUDIO SAMPLE
+            </Text>
+          </View>
+          <AudioPlayer />
+        </View>
+        <View
+          style={[
+            styles.searchView,
+            {
+              backgroundColor: Colors.white,
+              marginTop: responsivePortion(24),
               paddingTop: responsiveVerticalPortion(24),
             },
           ]}>
@@ -1796,4 +1777,4 @@ class CourseDetails extends React.Component {
   }
 }
 
-export default CourseDetails;
+export default AudioDetails;

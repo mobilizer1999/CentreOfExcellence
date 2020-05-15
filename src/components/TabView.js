@@ -1,6 +1,12 @@
 import React from 'react';
 import {TabView, SceneMap} from 'react-native-tab-view';
 import PropTypes from 'prop-types';
+import {DEVICE_SIZE} from '@config/constants';
+
+const initialLayout = {
+  height: 0,
+  width: DEVICE_SIZE.WIDTH,
+};
 
 export default class CustomTabView extends React.Component {
   constructor(props) {
@@ -30,8 +36,7 @@ export default class CustomTabView extends React.Component {
 
 CustomTabView.defaultProps = {
   index: 0,
-  tabBarComponent: null,
-  initialLayout: null,
+  initialLayout,
 };
 
 CustomTabView.propTypes = {
@@ -40,5 +45,5 @@ CustomTabView.propTypes = {
   renderScene: PropTypes.instanceOf(Object).isRequired,
   setIndex: PropTypes.func.isRequired,
   initialLayout: PropTypes.instanceOf(Object),
-  tabBarComponent: PropTypes.instanceOf(Object),
+  tabBarComponent: PropTypes.instanceOf(Object).isRequired,
 };

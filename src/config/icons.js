@@ -10,6 +10,7 @@ const search = require('@assets/icons/search.png');
 const modules = require('@assets/icons/module.png');
 const video = require('@assets/icons/video.png');
 const love = require('@assets/icons/love.png');
+const lovefill = require('@assets/icons/love-fill.png');
 const close = require('@assets/icons/cancel.png');
 const eye = require('@assets/icons/eye.png');
 const document = require('@assets/icons/document.png');
@@ -19,6 +20,23 @@ const ring = require('@assets/icons/ring.png');
 const menu = require('@assets/icons/menu.png');
 const gift = require('@assets/icons/gift.png');
 const share = require('@assets/icons/share.png');
+const lifetime = require('@assets/icons/lifetime.png');
+const support = require('@assets/icons/support.png');
+const sandtimer = require('@assets/icons/sandtimer.png');
+const plus = require('@assets/icons/plus.png');
+const gear = require('@assets/icons/gear.png');
+const play = require('@assets/icons/play.png');
+const dropmenu = require('@assets/icons/dropmenu.png');
+const viewcert = require('@assets/icons/view-certificate.png');
+const ordercert = require('@assets/icons/order-certificate.png');
+const postcert = require('@assets/icons/post-certificate.png');
+const downloadcert = require('@assets/icons/download-certificate.png');
+const notimsg = require('@assets/icons/noti-msg.png');
+const earphone = require('@assets/icons/earphon.png');
+const check = require('@assets/icons/check.png');
+const lockkey = require('@assets/icons/lockkey.png');
+const important = require('@assets/icons/important.png');
+const success = require('@assets/icons/success.png');
 
 const home_tab = require('@assets/tabs/home_tab.png');
 const love_tab = require('@assets/tabs/love_tab.png');
@@ -58,6 +76,15 @@ const psychology = require('@assets/icons/psychology.png');
 const reflexology = require('@assets/icons/reflexology.png');
 const reiki = require('@assets/icons/reiki.png');
 const supernatural = require('@assets/icons/supernatural.png');
+const gpay = require('@assets/icons/gpay.png');
+const visa = require('@assets/icons/visa.png');
+const truck = require('@assets/icons/truck.png');
+
+const activeiq = require('@assets/logo/activeiq.png');
+const cma = require('@assets/logo/cma.png');
+const cpd = require('@assets/logo/cpd.png');
+const ilm = require('@assets/logo/ilm.png');
+const qls = require('@assets/logo/qls.png');
 
 export default ICONS = {
   USER: user,
@@ -72,6 +99,7 @@ export default ICONS = {
   MODULE: modules,
   VIDEO: video,
   LOVE: love,
+  LOVEFILL: lovefill,
   HOME_TAB: home_tab,
   LOVE_TAB: love_tab,
   COURSE_TAB: course_tab,
@@ -88,6 +116,26 @@ export default ICONS = {
   MENU: menu,
   GIFT: gift,
   SHARE: share,
+  LIFETIME: lifetime,
+  SUPPORT: support,
+  SANDTIMER: sandtimer,
+  PLUS: plus,
+  GPAY: gpay,
+  VISA: visa,
+  TRUCK: truck,
+  GEAR: gear,
+  PLAY: play,
+  DROPMENU: dropmenu,
+  VIEWCERT: viewcert,
+  ORDERCERT: ordercert,
+  POSTCERT: postcert,
+  DOWNLOADCERT: downloadcert,
+  NOTIMSG: notimsg,
+  EARPHONE: earphone,
+  CHECK: check,
+  LOCKKEY: lockkey,
+  IMPORTANT: important,
+  SUCCESS: success,
 
   FBICON: fbIcon,
   GOOGLEICON: googleIcon,
@@ -119,4 +167,10 @@ export default ICONS = {
   REFLEXOLOGY: reflexology,
   REIKI: reiki,
   SUPERNATURAL: supernatural,
+
+  ACTIVEIQ: activeiq,
+  CMA: cma,
+  CPD: cpd,
+  ILM: ilm,
+  QLS: qls,
 };

@@ -110,12 +110,12 @@ class DrowDownItem extends React.Component {
                   ? this.props.visibleImage
                   : this.props.invisibleImage
               }
-              style={styles.icons}
+              style={[styles.icons, this.props.iconStyle]}
             />
           </View>
         </TouchableOpacity>
-        <View style={styles.content} onLayout={this.onLayout}>
-          <View style={[styles.contentChild]}>{this.props.children}</View>
+        <View style={[styles.contentChild]} onLayout={this.onLayout}>
+          {this.props.children}
         </View>
       </Animated.View>
     );
@@ -136,6 +136,7 @@ class DrowDownItem extends React.Component {
     this.animated.setValue(initialValue);
     Animated.spring(this.animated, {
       toValue: finalValue,
+      useNativeDriver: false,
     }).start();
   };
 

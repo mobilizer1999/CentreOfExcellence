@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderRadius: responsivePortion(2),
     borderWidth: 1,
     borderColor: Colors.disabled,
     paddingHorizontal: responsivePortion(16),

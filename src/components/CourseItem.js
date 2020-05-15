@@ -1,7 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TouchableHighlight} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native';
 import CardView from 'react-native-cardview';
 import ImageView from '@components/ImageView';
+import ProgressBar from '@components/ProgressBar';
 import {
   responsivePortion,
   responsiveVerticalPortion,
@@ -11,7 +19,7 @@ import {
 import ICONS from '@config/icons';
 import Colors from '@config/colors';
 
-export const CourseItem = ({item, index, onPress}) => (
+export const CourseItem = ({item, index, purchased, onPress}) => (
   <CardView
     cardElevation={4}
     cardMaxElevation={4}
@@ -19,39 +27,73 @@ export const CourseItem = ({item, index, onPress}) => (
     style={[
       styles.categoryItem,
       {
+        height: purchased
+          ? item.completion
+            ? responsivePortion(256)
+            : responsivePortion(234)
+          : responsivePortion(304),
         marginLeft:
           index === 0 ? DEVICE_SIZE.CONTENT_PADDING : responsivePortion(16),
       },
     ]}>
     <View style={styles.touchableItem} underlayColor={Colors.mainbackground}>
       <View style={styles.touchableItem}>
-        <View style={styles.header}>
-          <Image
-            source={ICONS.USER}
-            resizeMode="contain"
-            style={styles.smallIcon}
-          />
-          <Text
-            style={[
-              styles.normalText,
-              {fontWeight: 'bold', marginLeft: responsivePortion(8)},
-            ]}>
-            {item.enrolled}
-          </Text>
-        </View>
+        {!purchased && (
+          <View style={styles.header}>
+            <Image
+              source={ICONS.USER}
+              resizeMode="contain"
+              style={styles.smallIcon}
+            />
+            <Text
+              style={[
+                styles.normalText,
+                {fontWeight: 'bold', marginLeft: responsivePortion(8)},
+              ]}>
+              {item.enrolled}
+            </Text>
+          </View>
+        )}
         <ImageView
           source={item.img}
-          imageStyle={styles.itemImage}
+          imageStyle={[
+            styles.itemImage,
+            {
+              height: purchased ? responsivePortion(74) : responsivePortion(72),
+              boderTopLeftRadius: purchased ? responsivePortion(2) : 0,
+              boderTopRightRadius: purchased ? responsivePortion(2) : 0,
+            },
+          ]}
           activityIndicatorProps={{size: 'small'}}
         />
-        <View style={styles.itemTextView}>
+        <View
+          style={[
+            styles.itemTextView,
+            {
+              height: purchased
+                ? item.completion
+                  ? responsivePortion(182)
+                  : responsivePortion(160)
+                : responsivePortion(208),
+            },
+          ]}>
           <View style={styles.itemType}>
-            <Text style={[styles.smallText, {fontWeight: 'bold'}]}>
+            <Text
+              style={[
+                styles.smallText,
+                {fontWeight: 'bold', letterSpacing: responsivePortion(1.2)},
+              ]}>
               {item.type}
             </Text>
           </View>
           <Text
-            style={[styles.mediumText, {marginTop: responsivePortion(20)}]}
+            style={[
+              styles.mediumText,
+              {
+                marginTop: responsivePortion(20),
+                marginHorizontal: responsivePortion(8),
+              },
+            ]}
             numberOfLines={2}>
             {item.title}
           </Text>
@@ -86,96 +128,203 @@ export const CourseItem = ({item, index, onPress}) => (
                   },
                 ]}>{`${item.videos} Videos`}</Text>
             </View>
-            <View
-              style={[
-                styles.rowView,
-                {
-                  justifyContent: 'space-between',
-                  marginTop: responsivePortion(10),
-                },
-              ]}>
-              <Text
-                style={[
-                  styles.smallText,
-                  {
-                    fontSize: responsivePortion(20),
-                    fontWeight: 'bold',
-                    color: Colors.black,
-                    letterSpacing: responsivePortion(0.15),
-                  },
-                ]}>
-                {`£ 147.00`}
-              </Text>
-              <Image
-                source={ICONS.LOVE}
-                resizeMode="contain"
-                style={[
-                  styles.icon,
-                  {
-                    tintColor: Colors.red,
-                    marginRight: responsivePortion(4),
-                  },
-                ]}
-              />
-            </View>
-            <View
-              style={[
-                styles.rowView,
-                {
-                  marginTop: responsivePortion(4),
-                },
-              ]}>
-              <Text
-                style={[
-                  styles.normalText,
-                  {
-                    fontSize: responsivePortion(12),
-                    fontWeight: 'bold',
-                    color: '#000000',
-                    textDecorationLine: 'line-through',
-                  },
-                ]}>
-                {`£ 421`}
-              </Text>
-              <View style={styles.tagView}>
+            {purchased && (
+              <View
+                style={[styles.rowView, {marginTop: responsivePortion(12)}]}>
+                <Image
+                  source={item.addedWishlist ? ICONS.LOVEFILL : ICONS.LOVE}
+                  resizeMode="contain"
+                  style={[styles.icon, {tintColor: Colors.red}]}
+                />
                 <Text
                   style={[
                     styles.normalText,
                     {
-                      fontWeight: 'bold',
-                      color: Colors.green,
+                      color: Colors.black,
+                      marginLeft: responsivePortion(3),
                     },
                   ]}>
-                  {`SAVE £ 171`}
+                  {item.addedWishlist ? 'Added to Wishlist' : 'Add to Wishlist'}
                 </Text>
               </View>
-            </View>
-            <View
-              style={[
-                styles.rowView,
-                {
-                  justifyContent: 'space-between',
-                  marginTop: responsivePortion(5),
-                },
-              ]}>
-              <Text
+            )}
+            {purchased && item.completion && (
+              <View style={styles.progressView}>
+                <View
+                  style={[
+                    styles.rowView,
+                    {
+                      justifyContent: 'space-between',
+                      marginTop: responsivePortion(10),
+                    },
+                  ]}>
+                  <Text
+                    style={[
+                      styles.smallText,
+                      {
+                        letterSpacing: responsivePortion(1.2),
+                        color: Colors.black,
+                      },
+                    ]}>
+                    COMPLETION
+                  </Text>
+                  <Text
+                    style={[
+                      styles.smallText,
+                      {
+                        letterSpacing: responsivePortion(1.2),
+                        color: Colors.black,
+                      },
+                    ]}>
+                    {`${item.completion}%`}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    paddingHorizontal: responsivePortion(8),
+                    marginTop: responsivePortion(5),
+                  }}>
+                  <ProgressBar
+                    progress={item.completion / 100}
+                    width={null}
+                    height={responsiveVerticalPortion(8)}
+                    color={Colors.green}
+                    unfilledColor={Colors.disabled}
+                    borderWidth={0}
+                  />
+                </View>
+                <View
+                  style={{
+                    paddingHorizontal: responsivePortion(8),
+                    marginTop: responsivePortion(10),
+                  }}>
+                  <TouchableOpacity
+                    style={{flexDirection: 'row', alignItems: 'center'}}
+                    onPress={onPress}>
+                    <Image
+                      source={ICONS.PLAY}
+                      resizeMode="contain"
+                      style={[styles.icon, {tintColor: Colors.blue}]}
+                    />
+                    <Text
+                      style={[
+                        styles.normalText,
+                        {color: Colors.blue, marginLeft: responsivePortion(9)},
+                      ]}>
+                      Continue Course
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
+            {!purchased && (
+              <View
                 style={[
-                  styles.smallText,
+                  styles.rowView,
                   {
-                    fontSize: responsivePortion(8.6),
-                    fontWeight: '600',
-                    color: Colors.blue,
+                    justifyContent: 'space-between',
+                    marginTop: responsivePortion(10),
                   },
                 ]}>
-                FINANCE AVAILABLE
-              </Text>
-            </View>
-            <TouchableHighlight
-              style={styles.button}
-              underlayColor={Colors.background}
-              onPress={() => onPress(item)}>
-              <Text style={styles.normalText}>View Course</Text>
-            </TouchableHighlight>
+                <Text
+                  style={[
+                    styles.smallText,
+                    {
+                      fontSize: responsivePortion(20),
+                      fontWeight: 'bold',
+                      color: Colors.black,
+                      letterSpacing: responsivePortion(0.15),
+                    },
+                  ]}>
+                  {`£ 147.00`}
+                </Text>
+                <Image
+                  source={ICONS.LOVE}
+                  resizeMode="contain"
+                  style={[
+                    styles.icon,
+                    {
+                      tintColor: Colors.red,
+                      marginRight: responsivePortion(4),
+                    },
+                  ]}
+                />
+              </View>
+            )}
+            {!purchased && (
+              <View
+                style={[
+                  styles.rowView,
+                  {
+                    marginTop: responsivePortion(4),
+                  },
+                ]}>
+                <Text
+                  style={[
+                    styles.normalText,
+                    {
+                      fontSize: responsivePortion(12),
+                      fontWeight: 'bold',
+                      color: '#000000',
+                      textDecorationLine: 'line-through',
+                    },
+                  ]}>
+                  {`£ 421`}
+                </Text>
+                <View style={styles.tagView}>
+                  <Text
+                    style={[
+                      styles.normalText,
+                      {
+                        fontWeight: 'bold',
+                        color: Colors.green,
+                      },
+                    ]}>
+                    {`SAVE £ 171`}
+                  </Text>
+                </View>
+              </View>
+            )}
+            {!purchased && (
+              <View
+                style={[
+                  styles.rowView,
+                  {
+                    justifyContent: 'space-between',
+                    marginTop: responsivePortion(5),
+                  },
+                ]}>
+                <Text
+                  style={[
+                    styles.smallText,
+                    {
+                      fontSize: responsivePortion(8.6),
+                      fontWeight: '600',
+                      color: Colors.blue,
+                    },
+                  ]}>
+                  FINANCE AVAILABLE
+                </Text>
+              </View>
+            )}
+            {purchased && !item.completion && (
+              <View style={styles.progressView}>
+                <TouchableHighlight
+                  style={[styles.button, {top: responsivePortion(8)}]}
+                  underlayColor={Colors.background}
+                  onPress={() => onPress(item)}>
+                  <Text style={styles.normalText}>{'Start Course'}</Text>
+                </TouchableHighlight>
+              </View>
+            )}
+            {!purchased && (
+              <TouchableHighlight
+                style={styles.button}
+                underlayColor={Colors.background}
+                onPress={() => onPress(item)}>
+                <Text style={styles.normalText}>{'View Course'}</Text>
+              </TouchableHighlight>
+            )}
           </View>
         </View>
       </View>
@@ -233,13 +382,11 @@ const styles = StyleSheet.create({
   },
   itemTextView: {
     height: responsivePortion(208),
-    paddingHorizontal: responsivePortion(8),
-    marginTop: responsivePortion(-40),
     paddingBottom: responsivePortion(11),
   },
   itemType: {
     position: 'absolute',
-    paddingHorizontal: responsivePortion(30),
+    paddingHorizontal: responsivePortion(10),
     height: responsivePortion(24),
     backgroundColor: Colors.blue,
     left: responsivePortion(8),
@@ -257,6 +404,7 @@ const styles = StyleSheet.create({
   rowView: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: responsivePortion(8),
   },
   icon: {
     width: responsivePortion(13),
@@ -266,12 +414,18 @@ const styles = StyleSheet.create({
   button: {
     position: 'absolute',
     bottom: 0,
-    left: 0,
-    width: '100%',
+    left: responsivePortion(8),
+    right: responsivePortion(8),
     height: responsivePortion(32),
     backgroundColor: Colors.blue,
     borderRadius: responsivePortion(3),
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  progressView: {
+    flex: 1,
+    borderTopWidth: 1,
+    borderColor: Colors.disabled,
+    marginTop: responsivePortion(9),
   },
 });

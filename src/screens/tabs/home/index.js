@@ -155,7 +155,9 @@ class Home extends React.Component {
 
   _renderItem = ({item, index}) => {
     // return <AudioItem item={item} index={index} onPress={this.onPressAudio} />;
-    return <CourseItem item={item} index={index} onPress={this.onPressCourse} />;
+    return (
+      <CourseItem item={item} index={index} onPress={this.onPressCourse} />
+    );
   };
 
   render() {

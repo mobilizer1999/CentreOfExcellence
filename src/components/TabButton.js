@@ -37,14 +37,25 @@ export default function TabBarButton({routeName, onPress, focused}) {
       underlayColor={Colors.background}
       onPress={onPress}>
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        {(routeName === 'Wishlist' || routeName === 'MyCourses') && (
+          <View
+            style={[
+              styles.noti,
+              {
+                right:
+                  routeName === 'Wishlist'
+                    ? responsivePortion(4)
+                    : responsivePortion(10),
+              },
+            ]}
+          />
+        )}
         <Image
           source={iconMap[routeName].icon}
           resizeMode="contain"
           style={styles.icon}
         />
-        {/* {focused && ( */}
         <Text style={styles.label}>{iconMap[routeName].label}</Text>
-        {/* )} */}
       </View>
     </TouchableHighlight>
   );
@@ -69,5 +80,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: Colors.white,
     marginTop: 2,
+  },
+  noti: {
+    position: 'absolute',
+    top: responsivePortion(-4),
+    right: responsivePortion(4),
+    width: responsivePortion(8),
+    height: responsivePortion(8),
+    borderRadius: responsivePortion(4),
+    backgroundColor: Colors.red,
+    zIndex: 1,
   },
 });

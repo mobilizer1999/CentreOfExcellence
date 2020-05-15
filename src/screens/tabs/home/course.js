@@ -11,6 +11,7 @@ import {FullAudio} from '@components/FullAudio';
 import {SearchBar} from '@components/SearchBar';
 import CustomTabView from '@components/TabView';
 import PickerField from '@components/PickerField';
+import {ContentTabBar} from './ContentTabBar';
 import {styles} from './styles';
 import {
   DEVICE_SIZE,
@@ -114,7 +115,7 @@ class Course extends React.Component {
 
   onPressAudio = (item) => {
     const {navigation} = this.props;
-    navigation.navigate('AudioCourse', {course: item});
+    navigation.navigate('AudioDetails', {course: item});
   };
 
   renderImageView = () => {
@@ -286,66 +287,12 @@ class Course extends React.Component {
     const {routeIndex, selectedSortType} = this.state;
     return (
       <>
-        <View style={styles.tabViewHeader}>
-          <TouchableOpacity
-            style={[
-              styles.rowView,
-              {
-                flex: 1,
-                borderRadius: responsivePortion(2),
-                justifyContent: 'center',
-                paddingVertical: responsivePortion(7),
-                backgroundColor:
-                  routeIndex === 0 ? Colors.blue : Colors.mainbackground,
-              },
-            ]}
-            onPress={() => this.changeRouteIndex(0)}>
-            <Image
-              source={ICONS.DOCUMENT}
-              resizeMode="contain"
-              style={[
-                styles.tabViewIcon,
-                {tintColor: routeIndex === 0 ? Colors.white : Colors.blue},
-              ]}
-            />
-            <Text
-              style={[
-                styles.category,
-                {color: routeIndex === 0 ? Colors.white : Colors.blue},
-              ]}>
-              Courses
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[
-              styles.rowView,
-              {
-                flex: 1,
-                borderRadius: responsivePortion(2),
-                justifyContent: 'center',
-                paddingVertical: responsivePortion(7),
-                backgroundColor:
-                  routeIndex === 1 ? Colors.blue : Colors.mainbackground,
-              },
-            ]}
-            onPress={() => this.changeRouteIndex(1)}>
-            <Image
-              source={ICONS.MELODY}
-              resizeMode="contain"
-              style={[
-                styles.tabViewIcon,
-                {tintColor: routeIndex === 1 ? Colors.white : Colors.blue},
-              ]}
-            />
-            <Text
-              style={[
-                styles.category,
-                {color: routeIndex === 1 ? Colors.white : Colors.blue},
-              ]}>
-              Audio Books
-            </Text>
-          </TouchableOpacity>
-        </View>
+        <ContentTabBar
+          labels={['Courses', 'Audio Books']}
+          index={routeIndex}
+          hasIcon
+          onPress={this.changeRouteIndex}
+        />
         <PickerField
           style={styles.sortDropDown}
           width={DEVICE_SIZE.CONTENT_WIDTH}

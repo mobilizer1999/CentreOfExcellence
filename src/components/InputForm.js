@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import * as Progress from 'react-native-progress';
+import ProgressBar from '@components/ProgressBar';
 import Colors from '@config/colors';
 import {
   responsivePortion,
@@ -94,7 +94,7 @@ export default class InputForm extends React.Component {
           <View style={[styles.inputView, {borderTopWidth: 0}]}>
             <Text style={styles.subText}>Weak</Text>
             <View style={styles.progress}>
-              <Progress.Bar
+              <ProgressBar
                 progress={0.4}
                 width={null}
                 height={responsiveVerticalPortion(8)}

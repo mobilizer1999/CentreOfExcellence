@@ -1,3 +1,4 @@
+import {StyleSheet} from 'react-native';
 import Colors from '@config/colors';
 import {
   DEVICE_SIZE,
@@ -6,9 +7,305 @@ import {
   FONTS,
 } from '@config/constants';
 
-export const styles = {
+export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.mainbackground,
+    backgroundColor: Colors.white,
   },
-};
+  subjectView: {
+    width: '100%',
+    height: responsiveVerticalPortion(144),
+    marginBottom: responsiveVerticalPortion(26),
+  },
+  subjectImage: {
+    width: '100%',
+    height: '100%',
+  },
+  activeDot: {
+    width: responsiveVerticalPortion(8),
+    height: responsiveVerticalPortion(8),
+    borderRadius: responsiveVerticalPortion(4),
+    backgroundColor: Colors.white,
+    marginHorizontal: responsivePortion(8),
+  },
+  inactiveDot: {
+    width: responsiveVerticalPortion(8),
+    height: responsiveVerticalPortion(8),
+    borderRadius: responsiveVerticalPortion(4),
+    marginHorizontal: responsivePortion(8),
+    borderColor: Colors.white,
+    borderWidth: 1,
+  },
+  pagination: {
+    position: 'absolute',
+    width: '100%',
+    height: responsiveVerticalPortion(40),
+    bottom: 0,
+  },
+  normalText: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(10),
+    fontWeight: 'normal',
+    letterSpacing: responsivePortion(0.33),
+    color: Colors.white,
+  },
+  mediumText: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(14),
+    fontWeight: 'bold',
+    color: Colors.black,
+  },
+  largeText: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(20),
+    fontWeight: 'bold',
+    color: Colors.white,
+  },
+  smallText: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(8),
+    fontWeight: 'normal',
+    color: Colors.white,
+  },
+  subjectTextView: {
+    position: 'absolute',
+    right: 0,
+    bottom: responsiveVerticalPortion(44),
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    zIndex: 1,
+  },
+  scrollView: {
+    flex: 1,
+  },
+  carouselView: {
+    flex: 1,
+    width: '100%',
+  },
+  rowView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  category: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(14),
+    fontWeight: 'bold',
+    color: Colors.black,
+  },
+  icon: {
+    width: responsivePortion(12),
+    height: responsivePortion(12),
+    tintColor: Colors.black,
+  },
+  icon16: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    tintColor: Colors.blue,
+  },
+  icon22: {
+    width: responsivePortion(22),
+    height: responsivePortion(22),
+    tintColor: Colors.blue,
+  },
+  smallIcon: {
+    width: responsivePortion(8),
+    height: responsivePortion(8),
+    tintColor: Colors.white,
+  },
+  completedCourseItem: {
+    width: '100%',
+    height: responsivePortion(144),
+    borderWidth: 1,
+    borderColor: Colors.disabled,
+    borderRadius: responsivePortion(5),
+    marginBottom: responsivePortion(16),
+    padding: responsivePortion(16),
+  },
+  sortDropDown: {
+    width: DEVICE_SIZE.CONTENT_WIDTH,
+    height: responsiveVerticalPortion(32),
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: Colors.disabled,
+    borderRadius: responsivePortion(2),
+    paddingRight: responsivePortion(8),
+    marginTop: responsivePortion(12),
+  },
+
+  // CourseA Styles
+  courseImageView: {
+    width: '100%',
+    height: responsiveVerticalPortion(136),
+  },
+  backIcon: {
+    width: responsivePortion(16),
+    height: responsivePortion(13.6),
+    tintColor: Colors.white,
+  },
+  backIconView: {
+    position: 'absolute',
+    left: DEVICE_SIZE.CONTENT_PADDING,
+    top: responsiveVerticalPortion(14),
+    zIndex: 10,
+  },
+  gearIconView: {
+    position: 'absolute',
+    right: DEVICE_SIZE.CONTENT_PADDING,
+    top: responsiveVerticalPortion(14),
+    zIndex: 10,
+  },
+  courseMark: {
+    minWidth: responsivePortion(61),
+    height: responsiveVerticalPortion(24),
+    paddingHorizontal: responsivePortion(8),
+    backgroundColor: Colors.blue,
+    borderRadius: responsiveVerticalPortion(12),
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: responsiveVerticalPortion(16),
+  },
+  slantedText: {
+    fontFamily: FONTS.bornreadyslanted,
+    fontSize: responsivePortion(34),
+    color: Colors.white,
+    marginTop: responsiveVerticalPortion(-10),
+  },
+  certifiedIcon: {
+    width: responsivePortion(14),
+    height: responsivePortion(16),
+    tintColor: Colors.white,
+  },
+  accreditedIcon: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    tintColor: Colors.white,
+  },
+  searchView: {
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    marginTop: responsivePortion(24),
+  },
+  font12Normal: {
+    fontFamily: FONTS.main,
+    fontSize: responsivePortion(12),
+    fontWeight: 'normal',
+    color: Colors.white,
+  },
+  button: {
+    height: responsivePortion(32),
+    backgroundColor: Colors.blue,
+    borderRadius: responsivePortion(3),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tabBarView: {
+    height: responsivePortion(56),
+    flexDirection: 'row',
+  },
+  tabBarOuter: {
+    flex: 1,
+    borderBottomWidth: 4,
+    borderColor: Colors.white,
+  },
+  tabBarItem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: responsivePortion(8),
+  },
+  dropdownHeader: {
+    height: responsivePortion(80),
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    flexDirection: 'row-reverse',
+  },
+  dropdownIcon: {
+    tintColor: Colors.blue,
+    position: 'absolute',
+    right: DEVICE_SIZE.CONTENT_PADDING + responsivePortion(3),
+    top: responsivePortion(18),
+  },
+  dropdownItem: {
+    borderBottomWidth: 1,
+    borderColor: Colors.disabled,
+    paddingBottom: responsivePortion(44),
+    paddingTop: responsivePortion(32),
+  },
+  complete: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    borderRadius: responsivePortion(8),
+    backgroundColor: Colors.green,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  inprogress: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    borderRadius: responsivePortion(8),
+    backgroundColor: '#FF7100',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notstarted: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    borderRadius: responsivePortion(8),
+    borderWidth: 1,
+    borderColor: Colors.blue,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  assessmentView: {
+    height: responsivePortion(200),
+    backgroundColor: Colors.blue,
+    padding: DEVICE_SIZE.CONTENT_PADDING,
+  },
+  bottomSticky: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    height: responsiveVerticalPortion(132),
+    width: DEVICE_SIZE.WIDTH,
+    backgroundColor: Colors.white,
+  },
+  shadowView: {
+    height: responsiveVerticalPortion(3),
+    backgroundColor: '#E4E4E4',
+    borderTopRightRadius: responsivePortion(3),
+    borderTopLeftRadius: responsivePortion(3),
+  },
+  progressView: {
+    height: responsiveVerticalPortion(72),
+    justifyContent: 'center',
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+  },
+  modalContent: {
+    height: responsiveVerticalPortion(368),
+    marginHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    backgroundColor: Colors.mainbackground,
+    borderRadius: responsivePortion(3),
+    padding: responsivePortion(16),
+    alignItems: 'center',
+  },
+  dialogIcon: {
+    width: responsiveVerticalPortion(20),
+    height: responsiveVerticalPortion(20),
+  },
+
+  // Assessment
+  stickyContent: {
+    flex: 1,
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    paddingVertical: responsiveVerticalPortion(12),
+    justifyContent: 'space-between',
+  },
+  questionModal: {
+    height: responsiveVerticalPortion(496),
+    backgroundColor: Colors.mainbackground,
+    borderRadius: responsivePortion(3),
+    marginTop: responsiveVerticalPortion(88),
+  },
+  questionItem: {
+    height: responsiveVerticalPortion(72),
+  },
+});

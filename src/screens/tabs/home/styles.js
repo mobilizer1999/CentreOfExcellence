@@ -6,7 +6,6 @@ import {
   responsiveVerticalPortion,
   FONTS,
 } from '@config/constants';
-import {STATUSBAR_HEIGHT} from '@config/statusbar';
 
 export const styles = StyleSheet.create({
   container: {
@@ -221,7 +220,7 @@ export const styles = StyleSheet.create({
     width: DEVICE_SIZE.WIDTH,
     height: responsivePortion(104),
     backgroundColor: Colors.white,
-    elevation: 5,
+    elevation: 10,
   },
   courseBuyButton: {
     flex: 1,
@@ -248,5 +247,86 @@ export const styles = StyleSheet.create({
     width: responsivePortion(16),
     height: responsivePortion(16),
     tintColor: Colors.blue,
+  },
+  topSticky: {
+    height: responsivePortion(54),
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderBottomWidth: 2,
+    borderColor: '#D7D7D7',
+  },
+  seeAlsoView: {
+    height: responsiveVerticalPortion(56),
+    backgroundColor: Colors.blue,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: responsivePortion(2),
+    marginBottom: responsiveVerticalPortion(24),
+  },
+  accreditationView: {
+    height: responsiveVerticalPortion(114),
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: Colors.disabled,
+  },
+  accreditationImg: {
+    width: responsivePortion(51),
+    height: responsivePortion(29),
+  },
+  reviewAvatar: {
+    width: responsivePortion(32),
+    height: responsivePortion(32),
+  },
+  whiteParent: {
+    backgroundColor: Colors.white,
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+  },
+  modalContent: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    marginTop: DEVICE_SIZE.HEIGHT - responsiveVerticalPortion(396),
+  },
+  googlePayView: {
+    height: responsiveVerticalPortion(52),
+    backgroundColor: Colors.white,
+    paddingHorizontal: responsivePortion(16),
+    justifyContent: 'center',
+    elevation: 4,
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+  },
+  gpayIcon: {
+    width: responsivePortion(51),
+    height: responsiveVerticalPortion(21),
+  },
+
+  // AudioDetails
+  audioMaskView: {
+    position: 'absolute',
+    width: responsivePortion(152),
+    height: '100%',
+    top: 0,
+    right: 0,
+    justifyContent: 'center',
+    backgroundColor: Colors.blue,
+    opacity: 0.75,
+  },
+  earphoneIcon: {
+    position: 'absolute',
+    width: responsiveVerticalPortion(20),
+    height: responsiveVerticalPortion(20),
+    tintColor: Colors.white,
+    top: responsiveVerticalPortion(58),
+    right: responsivePortion(108),
+  },
+  audioHeaderView: {
+    position: 'absolute',
+    width: responsivePortion(50),
+    height: responsiveVerticalPortion(30),
+    top: responsiveVerticalPortion(55),
+    right: responsivePortion(46),
   },
 });
