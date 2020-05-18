@@ -251,7 +251,7 @@ class CourseProgress extends React.Component {
   onPressPartItem = (part) => {
     const {navigation} = this.props;
     if (part.progress === 100) {
-      navigation.navigate('EditAnswer');
+      navigation.navigate('Assessment');
     } else {
       navigation.navigate('Assessment');
     }

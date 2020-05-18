@@ -332,6 +332,16 @@ class MyCourses extends React.Component {
     });
   };
 
+  onPressCourse = (item) => {
+    const {navigation} = this.props;
+    navigation.navigate('CourseOverview', {item});
+  };
+
+  onPressAudioPlay = (item) => {
+    const {navigation} = this.props;
+    navigation.navigate('AudioPlay', {item});
+  };
+
   renderImageView = () => {
     return (
       <View style={styles.courseImageView}>
@@ -388,11 +398,6 @@ class MyCourses extends React.Component {
     );
   };
 
-  onPressCourse = (item) => {
-    const {navigation} = this.props;
-    navigation.navigate('CourseOverview', {item});
-  };
-
   _renderItem = ({item, index}) => {
     return (
       <CourseItem
@@ -421,7 +426,7 @@ class MyCourses extends React.Component {
         item={item}
         purchased
         index={index}
-        onPress={() => this.onPressCourse(item)}
+        onPress={() => this.onPressAudioPlay(item)}
       />
     );
   };
@@ -432,7 +437,7 @@ class MyCourses extends React.Component {
         item={item}
         purchased
         index={index}
-        onPress={() => this.onPressCourse(item)}
+        onPress={() => this.onPressAudioPlay(item)}
       />
     );
   };
@@ -443,7 +448,7 @@ class MyCourses extends React.Component {
         item={item}
         purchased
         index={index}
-        onPress={() => this.onPressCourse(item)}
+        onPress={() => this.onPressAudioPlay(item)}
       />
     );
   };
@@ -903,14 +908,13 @@ class MyCourses extends React.Component {
     return (
       <ModalView
         visible={modalVisible}
-        modalHeight={responsiveVerticalPortion(224)}
         onBackdropPress={() => {
           this.setState({modalVisible: false});
         }}
         onBackButtonPress={() => {
           this.setState({modalVisible: false});
         }}>
-        <View style={{flex: 1, backgroundColor: Colors.white}}>
+        <View style={styles.certificateModal}>
           <View
             style={[
               styles.rowView,

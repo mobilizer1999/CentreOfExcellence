@@ -280,7 +280,7 @@ export const AudioItem = ({item, index, purchased, onPress}) => (
                     marginTop: responsivePortion(10),
                   }}>
                   <TouchableOpacity
-                    style={{flexDirection: 'row', alignItems: 'center'}}>
+                    style={{flexDirection: 'row', alignItems: 'center'}} onPress={onPress}>
                     <Image
                       source={ICONS.PLAY}
                       resizeMode="contain"

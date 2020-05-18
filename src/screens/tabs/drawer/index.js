@@ -2,9 +2,11 @@ import React from 'react';
 import {View, Text, TouchableOpacity, ScrollView, Image} from 'react-native';
 import DropDownItem from '@components/DropDownItem';
 import PickerField from '@components/PickerField';
+import SvgCategory from '@components/categories';
 import {styles} from './styles';
 import {responsivePortion, responsiveVerticalPortion} from '@config/constants';
 import ICONS from '@config/icons';
+import Colors from '@config/colors';
 
 const logoImg = require('@assets/logo/logo.png');
 const avatarImg = require('@assets/profile/avatar.png');
@@ -34,99 +36,99 @@ const dropDownData = [
     items: [
       {
         name: 'Aromatherapy',
-        icon: ICONS.AROMA,
+        icon: 'aromatherapy-courses',
       },
       {
         name: 'Reflexology',
-        icon: ICONS.REFLEXOLOGY,
+        icon: 'reflexology-courses',
       },
       {
         name: 'Energy Healing',
-        icon: ICONS.ENERGY,
+        icon: 'energy-healing-courses',
       },
       {
         name: 'Massage',
-        icon: ICONS.MASSAGE,
+        icon: 'massage-courses',
       },
       {
         name: 'Autism & Special Needs',
-        icon: ICONS.AUTISM,
+        icon: 'autism-special-needs-courses',
       },
       {
         name: 'Reiki',
-        icon: ICONS.REIKI,
+        icon: 'reiki-courses',
       },
       {
         name: 'Life Coaching',
-        icon: ICONS.COACHING,
+        icon: 'life-coaching-courses',
       },
       {
         name: 'CBT: Coginitive Behavioural',
-        icon: ICONS.COGNITIVE,
+        icon: 'cbt-courses',
       },
       {
         name: 'Mindfullness',
-        icon: ICONS.COGNITIVE,
+        icon: 'mindfulness-courses',
       },
       {
         name: 'Psychic & Supernatural',
-        icon: ICONS.SUPERNATURAL,
+        icon: 'psychic-development-courses',
       },
       {
         name: 'Beauty Therapy',
-        icon: ICONS.BEAUTY,
+        icon: 'beauty-therapy-courses',
       },
       {
         name: 'Holistic Therapy',
-        icon: ICONS.LOVE,
+        icon: 'holistic-therapy-courses',
       },
       {
         name: 'Counselling',
-        icon: ICONS.COUNSELLING,
+        icon: 'counselling-courses',
       },
       {
         name: 'Psychology',
-        icon: ICONS.PSYCHOLOGY,
+        icon: 'psychology-courses',
       },
       {
         name: 'Diet & Nutrition',
-        icon: ICONS.DIET,
+        icon: 'diet-nutrition-courses',
       },
       {
         name: 'Nuero Linguistics',
-        icon: ICONS.NUERO,
+        icon: 'nlp-practitioner-courses',
       },
       {
         name: 'Hypnotherapy',
-        icon: ICONS.EYE,
+        icon: 'hypnotherapy-courses',
       },
       {
         name: 'Animal Care',
-        icon: ICONS.ANIMAL,
+        icon: 'animal-care-courses',
       },
       {
         name: 'Hobby & Craft',
-        icon: ICONS.HOBBY,
+        icon: 'hobby-craft-courses',
       },
       {
         name: 'Writing',
-        icon: ICONS.EDIT,
+        icon: 'writing-courses',
       },
       {
         name: 'Fitness & Wellbeing',
-        icon: ICONS.FITNESS,
+        icon: 'fitness-courses',
       },
       {
         name: 'Business, Marketing & PR',
-        icon: ICONS.BUSINESS,
+        icon: 'business-marketing-pr-courses',
       },
       {
         name: 'History',
-        icon: ICONS.HISTORY,
+        icon: 'history-courses',
       },
       {
         name: 'Audio Books',
-        icon: ICONS.AUDIO,
+        icon: 'self-help-audio-books',
       },
     ],
     expanded: false,
@@ -247,16 +249,10 @@ class Drawer extends React.Component {
                               key={subindex}
                               style={styles.subItemView}>
                               {subitem.icon && (
-                                <Image
-                                  source={subitem.icon}
-                                  resizeMode="contain"
-                                  style={[
-                                    styles.icon,
-                                    {
-                                      width: responsivePortion(18),
-                                      height: responsivePortion(18),
-                                    },
-                                  ]}
+                                <SvgCategory
+                                  courseName={subitem.icon}
+                                  size={responsivePortion(16)}
+                                  color={Colors.white}
                                 />
                               )}
                               <Text

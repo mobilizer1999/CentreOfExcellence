@@ -19,7 +19,7 @@ const AudioPlayer = ({style, progress, total}) => (
       minimumValue={0}
       maximumValue={58}
       step={1}
-      disabled
+      // disabled
       thumbTintColor={Colors.background}
       trackStyle={{
         height: responsivePortion(9),

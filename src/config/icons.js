@@ -37,8 +37,16 @@ const check = require('@assets/icons/check.png');
 const lockkey = require('@assets/icons/lockkey.png');
 const important = require('@assets/icons/important.png');
 const success = require('@assets/icons/success.png');
+const rightarrow = require('@assets/icons/right-arrow.png');
+const upload = require('@assets/icons/upload.png');
+const playbutton = require('@assets/icons/play-button.png');
+const prevbutton = require('@assets/icons/prev-button.png');
+const nextbutton = require('@assets/icons/next-button.png');
+const repeatbutton = require('@assets/icons/repeat-button.png');
+const replay = require('@assets/icons/replay-button.png');
 
 const home_tab = require('@assets/tabs/home_tab.png');
+const home_tab_tint = require('@assets/tabs/home_tab_tint.png');
 const love_tab = require('@assets/tabs/love_tab.png');
 const course_tab = require('@assets/tabs/course_tab.png');
 const message_tab = require('@assets/tabs/message_tab.png');
@@ -101,7 +109,9 @@ export default ICONS = {
   LOVE: love,
   LOVEFILL: lovefill,
   HOME_TAB: home_tab,
+  HOME_TAB_TINT: home_tab_tint,
   LOVE_TAB: love_tab,
+  LOVE_TAB_TINT: lovefill,
   COURSE_TAB: course_tab,
   MESSAGE_TAB: message_tab,
   USER_TAB: user_tab,
@@ -136,6 +146,13 @@ export default ICONS = {
   LOCKKEY: lockkey,
   IMPORTANT: important,
   SUCCESS: success,
+  RIGHTARROW: rightarrow,
+  UPLOAD: upload,
+  PLAYBUTTON: playbutton,
+  NEXTPLAY: nextbutton,
+  PREVPLAY: prevbutton,
+  REPEAT: repeatbutton,
+  REPLAYBUTTON: replay,
 
   FBICON: fbIcon,
   GOOGLEICON: googleIcon,

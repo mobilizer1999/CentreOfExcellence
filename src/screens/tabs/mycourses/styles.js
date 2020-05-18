@@ -131,6 +131,11 @@ export const styles = StyleSheet.create({
     paddingRight: responsivePortion(8),
     marginTop: responsivePortion(12),
   },
+  certificateModal: {
+    height: responsiveVerticalPortion(224), 
+    backgroundColor: Colors.white,
+    marginTop: DEVICE_SIZE.HEIGHT - responsiveVerticalPortion(224),
+  },
 
   // CourseA Styles
   courseImageView: {
@@ -145,13 +150,13 @@ export const styles = StyleSheet.create({
   backIconView: {
     position: 'absolute',
     left: DEVICE_SIZE.CONTENT_PADDING,
-    top: responsiveVerticalPortion(14),
+    top: responsiveVerticalPortion(16),
     zIndex: 10,
   },
   gearIconView: {
     position: 'absolute',
     right: DEVICE_SIZE.CONTENT_PADDING,
-    top: responsiveVerticalPortion(14),
+    top: responsiveVerticalPortion(16),
     zIndex: 10,
   },
   courseMark: {
@@ -307,5 +312,110 @@ export const styles = StyleSheet.create({
   },
   questionItem: {
     height: responsiveVerticalPortion(72),
+  },
+  questionInfo: {
+    height: responsiveVerticalPortion(132),
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    borderBottomWidth: 1,
+    borderColor: Colors.disabled,
+  },
+  optionView: {
+    width: responsivePortion(16),
+    height: responsivePortion(16),
+    borderRadius: responsivePortion(8),
+    borderWidth: 1,
+    borderColor: Colors.disabled,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: responsivePortion(16),
+  },
+  option: {
+    width: responsivePortion(8),
+    height: responsivePortion(8),
+    borderRadius: responsivePortion(8),
+    backgroundColor: Colors.white,
+  },
+  stepButtonView: {
+    height: responsiveVerticalPortion(62),
+    flexDirection: 'row',
+    marginTop: responsivePortion(15),
+    borderTopWidth: 1,
+    borderColor: Colors.blue,
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    paddingBottom: responsiveVerticalPortion(6),
+  },
+  separateView: {
+    width: 2,
+    height: '100%',
+    borderWidth: 1,
+    borderColor: Colors.blue,
+    marginHorizontal: responsivePortion(8),
+  },
+  writingView: {
+    height: responsiveVerticalPortion(200),
+    backgroundColor: Colors.mainbackground,
+    paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
+    paddingVertical: responsiveVerticalPortion(16),
+  },
+  textInput: {
+    padding: 0,
+    fontSize: responsivePortion(12),
+    lineHeight: responsivePortion(16),
+    color: '#BEBEBE',
+  },
+  uploadButton: {
+    height: responsiveVerticalPortion(40),
+    flexDirection: 'row',
+    paddingHorizontal: responsivePortion(16),
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderRadius: responsivePortion(2),
+    borderColor: Colors.disabled,
+    marginTop: responsivePortion(16),
+  },
+  noteView: {
+    padding: responsivePortion(16),
+    backgroundColor: Colors.mainbackground,
+    borderRadius: responsivePortion(3),
+    borderWidth: 1,
+    borderColor: Colors.blue,
+    marginTop: responsivePortion(32),
+    marginBottom: responsivePortion(16),
+  },
+
+  // AudioPlay styles
+  imageView: {
+    width: responsivePortion(256),
+    height: responsivePortion(256),
+  },
+  audioMaskView: {
+    position: 'absolute',
+    width: responsivePortion(128),
+    height: '100%',
+    top: 0,
+    right: 0,
+    justifyContent: 'center',
+    backgroundColor: Colors.blue,
+    opacity: 0.75,
+  },
+  earphoneIcon: {
+    position: 'absolute',
+    width: responsivePortion(23),
+    height: responsivePortion(23),
+    tintColor: Colors.white,
+    top: responsiveVerticalPortion(112),
+    left: responsivePortion(145),
+  },
+  audioHeaderView: {
+    position: 'absolute',
+    width: responsivePortion(56),
+    height: responsivePortion(32),
+    top: responsivePortion(119),
+    right: responsivePortion(18),
+  },
+  slider: {
+    width: '100%',
+    marginTop: responsivePortion(5),
   },
 });

@@ -23,6 +23,7 @@ import Wishlist from '@screens/tabs/wishlist';
 import MyCourses from '@screens/tabs/mycourses';
 import CourseOverview from '@screens/tabs/mycourses/courseoverview';
 import Assessment from '@screens/tabs/mycourses/assessment';
+import AudioPlay from '@screens/tabs/mycourses/audioplay';
 import Messages from '@screens/tabs/messages';
 import Accounts from '@screens/tabs/accounts';
 
@@ -91,6 +92,12 @@ const MyCoursesStack = createStackNavigator(
     },
     Assessment: {
       screen: Assessment,
+      navigationOptions: ({navigation}) => ({
+        headerShown: false,
+      }),
+    },
+    AudioPlay: {
+      screen: AudioPlay,
       navigationOptions: ({navigation}) => ({
         headerShown: false,
       }),

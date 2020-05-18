@@ -8,22 +8,27 @@ const iconMap = {
   Home: {
     label: 'Home',
     icon: ICONS.HOME_TAB,
+    tintIcon: ICONS.HOME_TAB_TINT,
   },
   Wishlist: {
     label: 'Wishlist',
     icon: ICONS.LOVE_TAB,
+    tintIcon: ICONS.LOVE_TAB_TINT,
   },
   MyCourses: {
     label: 'My Courses',
     icon: ICONS.COURSE_TAB,
+    tintIcon: ICONS.COURSE_TAB,
   },
   Messages: {
     label: 'Messages',
     icon: ICONS.MESSAGE_TAB,
+    tintIcon: ICONS.MESSAGE_TAB,
   },
   Accounts: {
     label: 'Accounts',
     icon: ICONS.USER_TAB,
+    tintIcon: ICONS.USER_TAB,
   },
 };
 
@@ -51,7 +56,9 @@ export default function TabBarButton({routeName, onPress, focused}) {
           />
         )}
         <Image
-          source={iconMap[routeName].icon}
+          source={
+            focused ? iconMap[routeName].tintIcon : iconMap[routeName].icon
+          }
           resizeMode="contain"
           style={styles.icon}
         />

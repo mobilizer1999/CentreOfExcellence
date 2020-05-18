@@ -114,7 +114,7 @@ export const styles = StyleSheet.create({
   backIconView: {
     position: 'absolute',
     left: DEVICE_SIZE.CONTENT_PADDING,
-    top: responsiveVerticalPortion(14),
+    top: responsiveVerticalPortion(16),
     zIndex: 10,
   },
   courseMark: {
