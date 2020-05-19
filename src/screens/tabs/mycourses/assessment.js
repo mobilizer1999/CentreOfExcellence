@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import DocumentPicker from 'react-native-document-picker';
+// import DocumentPicker from 'react-native-document-picker';
 import {BaseView} from '@components/Base';
 import HeaderView from '@components/HeaderView';
 import {ModalView} from '@components/Modal';
@@ -211,25 +211,25 @@ class Assessment extends React.Component {
   };
 
   onAttatchFile = async () => {
-    try {
-      const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-      });
-      const file = {
-        uri: res.uri,
-        type: res.type,
-        name: res.name,
-      };
-      this.setState({
-        uploadFile: file,
-      });
-    } catch (err) {
-      if (DocumentPicker.isCancel(err)) {
-        console.log('You cancelled document pick');
-      } else {
-        throw err;
-      }
-    }
+    // try {
+    //   const res = await DocumentPicker.pick({
+    //     type: [DocumentPicker.types.allFiles],
+    //   });
+    //   const file = {
+    //     uri: res.uri,
+    //     type: res.type,
+    //     name: res.name,
+    //   };
+    //   this.setState({
+    //     uploadFile: file,
+    //   });
+    // } catch (err) {
+    //   if (DocumentPicker.isCancel(err)) {
+    //     console.log('You cancelled document pick');
+    //   } else {
+    //     throw err;
+    //   }
+    // }
   };
 
   renderQuestionsHeader = () => {
