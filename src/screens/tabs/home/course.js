@@ -149,53 +149,64 @@ class Course extends React.Component {
               COURSES
             </Text>
           </View>
-          <Text style={styles.slantedText}>Aromatherapy</Text>
-          <Text style={[styles.largeText, {fontSize: responsivePortion(20)}]}>
-            Courses
-          </Text>
-          <View style={[styles.rowView, {justifyContent: 'center'}]}>
-            <StarView
-              style={{marginTop: responsiveVerticalPortion(20)}}
-              rating={4}
-              users="15,712 ratings"
-            />
-          </View>
           <View
-            style={[
-              styles.rowView,
-              {
-                justifyContent: 'space-between',
-                width: '100%',
-                marginTop: responsiveVerticalPortion(16),
-              },
-            ]}>
-            <View style={styles.rowView}>
-              <Image
-                source={ICONS.CERTIFIED}
-                resizeMode="contain"
-                style={styles.certifiedIcon}
-              />
+            style={{
+              flex: 1,
+              justifyContent: 'space-between',
+              paddingBottom: responsiveVerticalPortion(16),
+            }}>
+            <View style={{alignItems: 'center'}}>
+              <Text style={styles.slantedText}>Aromatherapy</Text>
               <Text
                 style={[
-                  styles.normalText,
-                  {marginLeft: responsivePortion(10)},
+                  styles.largeText,
+                  {
+                    fontSize: responsivePortion(20),
+                    marginTop: responsiveVerticalPortion(-10),
+                  },
                 ]}>
-                Certified Course
+                Courses
               </Text>
             </View>
-            <View style={styles.rowView}>
-              <Image
-                source={ICONS.ACCREDITED}
-                resizeMode="contain"
-                style={styles.certifiedIcon}
-              />
-              <Text
-                style={[
-                  styles.normalText,
-                  {marginLeft: responsivePortion(10)},
-                ]}>
-                Accredited Course
-              </Text>
+            <View style={[styles.rowView, {justifyContent: 'center'}]}>
+              <StarView rating={4} users="15,712 ratings" />
+            </View>
+            <View
+              style={[
+                styles.rowView,
+                {
+                  justifyContent: 'space-between',
+                  width: DEVICE_SIZE.CONTENT_WIDTH,
+                },
+              ]}>
+              <View style={styles.rowView}>
+                <Image
+                  source={ICONS.CERTIFIED}
+                  resizeMode="contain"
+                  style={styles.certifiedIcon}
+                />
+                <Text
+                  style={[
+                    styles.normalText,
+                    {marginLeft: responsivePortion(10)},
+                  ]}>
+                  Certified Course
+                </Text>
+              </View>
+              <View style={styles.rowView}>
+                <Image
+                  source={ICONS.ACCREDITED}
+                  resizeMode="contain"
+                  style={styles.certifiedIcon}
+                />
+                <Text
+                  style={[
+                    styles.normalText,
+                    {marginLeft: responsivePortion(10)},
+                  ]}>
+                  Accredited Course
+                </Text>
+              </View>
             </View>
           </View>
         </ImageView>
