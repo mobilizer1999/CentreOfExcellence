@@ -374,17 +374,16 @@ export const AudioItem = ({item, index, purchased, onPress}) => (
                     marginTop: responsivePortion(10),
                   },
                 ]}>
-                <Text
-                  style={[
-                    styles.smallText,
-                    {
-                      fontSize: responsivePortion(8.6),
-                      fontWeight: '600',
-                      color: Colors.blue,
-                    },
-                  ]}>
-                  FINANCE AVAILABLE
-                </Text>
+                <Image
+                  source={ICONS.FINANCECOE}
+                  resizeMode="contain"
+                  style={styles.financeText}
+                />
+                <Image
+                  source={ICONS.AVAILABLE}
+                  resizeMode="contain"
+                  style={[styles.financeText, {marginTop: -3}]}
+                />
               </View>
             )}
             {purchased && !item.progress && (
@@ -567,5 +566,9 @@ const styles = StyleSheet.create({
     borderRadius: responsivePortion(3),
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  financeText: {
+    width: responsivePortion(49),
+    height: responsivePortion(16),
   },
 });

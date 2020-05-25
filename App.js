@@ -7,12 +7,19 @@
  */
 
 import React from 'react';
-import {View, StatusBar, StyleSheet} from 'react-native';
+import {View, StatusBar, Platform, StyleSheet} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import Main from './src';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    if (Platform.OS === 'ios') {
+      SplashScreen.hide();
+    }
   }
 
   render() {

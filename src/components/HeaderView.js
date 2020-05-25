@@ -21,18 +21,18 @@ export default class HeaderView extends React.Component {
   }
 
   render() {
-    const {style, onPressMenu} = this.props;
+    const {style, showBack, onPressMenu} = this.props;
     return (
       <View style={[styles.container, {style}]}>
         <View style={styles.menuView}>
           <TouchableOpacity onPress={onPressMenu}>
             <Image
-              source={ICONS.MENU}
+              source={showBack ? ICONS.BACK : ICONS.MENU}
               resizeMode="contain"
               style={styles.icon}
             />
           </TouchableOpacity>
-          <Text style={styles.label}>Explorer</Text>
+          {!showBack && <Text style={styles.label}>Explorer</Text>}
         </View>
         <Image source={logoImg} resizeMode="contain" style={styles.logo} />
         <View style={styles.menuView}>
@@ -59,11 +59,13 @@ export default class HeaderView extends React.Component {
 
 HeaderView.defaultProps = {
   style: null,
+  showBack: false,
   onPressMenu: null,
 };
 
 HeaderView.propTypes = {
   style: PropTypes.instanceOf(Object),
+  showBack: PropTypes.bool,
   onPressMenu: PropTypes.func,
 };
 

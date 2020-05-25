@@ -290,21 +290,19 @@ export const CourseItem = ({item, index, purchased, onPress}) => (
                 style={[
                   styles.rowView,
                   {
-                    justifyContent: 'space-between',
                     marginTop: responsivePortion(5),
                   },
                 ]}>
-                <Text
-                  style={[
-                    styles.smallText,
-                    {
-                      fontSize: responsivePortion(8.6),
-                      fontWeight: '600',
-                      color: Colors.blue,
-                    },
-                  ]}>
-                  FINANCE AVAILABLE
-                </Text>
+                <Image
+                  source={ICONS.FINANCECOE}
+                  resizeMode="contain"
+                  style={styles.financeText}
+                />
+                <Image
+                  source={ICONS.AVAILABLE}
+                  resizeMode="contain"
+                  style={[styles.financeText, {marginTop: -3}]}
+                />
               </View>
             )}
             {purchased && !item.completion && (
@@ -427,5 +425,9 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderColor: Colors.disabled,
     marginTop: responsivePortion(9),
+  },
+  financeText: {
+    width: responsivePortion(49),
+    height: responsivePortion(16),
   },
 });

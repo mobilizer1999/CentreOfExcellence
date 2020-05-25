@@ -18,7 +18,7 @@ const iconMap = {
   MyCourses: {
     label: 'My Courses',
     icon: ICONS.COURSE_TAB,
-    tintIcon: ICONS.COURSE_TAB,
+    tintIcon: ICONS.COURSE_TAB_TINT,
   },
   Messages: {
     label: 'Messages',

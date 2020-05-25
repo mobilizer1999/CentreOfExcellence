@@ -1,7 +1,6 @@
 import React from 'react';
-import {View, Text, ScrollView, Image, TouchableHighlight} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
-import CardView from 'react-native-cardview';
 import {BaseView} from '@components/Base';
 import HeaderView from '@components/HeaderView';
 import ImageView from '@components/ImageView';
@@ -13,7 +12,6 @@ import {
   responsivePortion,
   responsiveVerticalPortion,
 } from '@config/constants';
-import Colors from '@config/colors';
 import ICONS from '@config/icons';
 
 const dummyImg = require('@assets/images/dummy.png');

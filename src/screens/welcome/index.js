@@ -37,7 +37,7 @@ class Welcome extends React.Component {
               <Text style={[styles.welcome, {marginTop: 10}]}>
                 Welcome to the
               </Text>
-              <Text style={styles.welcome}>Center of Excellence</Text>
+              <Text style={styles.welcome}>Centre of Excellence</Text>
             </View>
             <View style={styles.buttonView}>
               <View style={styles.buttons}>

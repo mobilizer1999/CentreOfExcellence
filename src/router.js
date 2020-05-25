@@ -14,6 +14,7 @@ import Intro from '@screens/intro';
 
 import Home from '@screens/tabs/home';
 import Drawer from '@screens/tabs/drawer';
+import CustomWebView from '@screens/tabs/home/webview';
 import CourseDetails from '@screens/tabs/home/coursedetails';
 import AudioDetails from '@screens/tabs/home/audiodetails';
 import AudioCourse from '@screens/tabs/home/audio';
@@ -63,6 +64,12 @@ const HomeStack = createStackNavigator(
     },
     AudioDetails: {
       screen: AudioDetails,
+      navigationOptions: () => ({
+        headerShown: false,
+      }),
+    },
+    CustomWebView: {
+      screen: CustomWebView,
       navigationOptions: () => ({
         headerShown: false,
       }),

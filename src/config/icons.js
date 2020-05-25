@@ -49,6 +49,7 @@ const home_tab = require('@assets/tabs/home_tab.png');
 const home_tab_tint = require('@assets/tabs/home_tab_tint.png');
 const love_tab = require('@assets/tabs/love_tab.png');
 const course_tab = require('@assets/tabs/course_tab.png');
+const course_tab_tint = require('@assets/tabs/course-tint.png');
 const message_tab = require('@assets/tabs/message_tab.png');
 const user_tab = require('@assets/tabs/user_tab.png');
 
@@ -87,6 +88,8 @@ const supernatural = require('@assets/icons/supernatural.png');
 const gpay = require('@assets/icons/gpay.png');
 const visa = require('@assets/icons/visa.png');
 const truck = require('@assets/icons/truck.png');
+const financeCoE = require('@assets/icons/finance.png');
+const available = require('@assets/icons/available.png');
 
 const activeiq = require('@assets/logo/activeiq.png');
 const cma = require('@assets/logo/cma.png');
@@ -113,6 +116,7 @@ export default ICONS = {
   LOVE_TAB: love_tab,
   LOVE_TAB_TINT: lovefill,
   COURSE_TAB: course_tab,
+  COURSE_TAB_TINT: course_tab_tint,
   MESSAGE_TAB: message_tab,
   USER_TAB: user_tab,
   CLOSE: close,
@@ -153,6 +157,8 @@ export default ICONS = {
   PREVPLAY: prevbutton,
   REPEAT: repeatbutton,
   REPLAYBUTTON: replay,
+  FINANCECOE: financeCoE,
+  AVAILABLE: available,
 
   FBICON: fbIcon,
   GOOGLEICON: googleIcon,

@@ -7,6 +7,7 @@ import {styles} from './styles';
 import {responsivePortion, responsiveVerticalPortion} from '@config/constants';
 import ICONS from '@config/icons';
 import Colors from '@config/colors';
+import {COE_URL} from '@config/global';
 
 const logoImg = require('@assets/logo/logo.png');
 const avatarImg = require('@assets/profile/avatar.png');
@@ -153,29 +154,36 @@ const dropDownData = [
       {
         name: 'About CoE',
         icon: null,
+        target: 'about',
       },
       {
         name: 'Blog',
         icon: null,
+        target: 'blog',
       },
       {
         name: 'CoE Awards',
         icon: null,
+        target: 'awards',
       },
       {
         name: 'Careers',
         icon: null,
+        target: 'careers',
       },
       {
         name: 'Contact',
         icon: null,
+        target: 'contact',
       },
       {
         name: 'Support',
         icon: null,
+        target: 'support',
       },
     ],
     expanded: false,
+    route: 'CustomWebView',
   },
 ];
 
@@ -208,6 +216,15 @@ class Drawer extends React.Component {
     const chnData = categoryData[index];
     chnData.expanded = !chnData.expanded;
     this.setState({categoryData});
+  };
+
+  onPressDropdownMenu = (route, target) => {
+    const {navigation} = this.props;
+    if (route && route === 'CustomWebView') {
+      const url = `${COE_URL}/${target}/`;
+      navigation.toggleDrawer();
+      navigation.navigate(route, {url});
+    }
   };
 
   render() {
@@ -247,7 +264,13 @@ class Drawer extends React.Component {
                           return (
                             <TouchableOpacity
                               key={subindex}
-                              style={styles.subItemView}>
+                              style={styles.subItemView}
+                              onPress={() =>
+                                this.onPressDropdownMenu(
+                                  item.route,
+                                  subitem.target,
+                                )
+                              }>
                               {subitem.icon && (
                                 <SvgCategory
                                   courseName={subitem.icon}

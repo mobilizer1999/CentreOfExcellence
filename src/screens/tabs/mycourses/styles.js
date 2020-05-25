@@ -132,7 +132,7 @@ export const styles = StyleSheet.create({
     marginTop: responsivePortion(12),
   },
   certificateModal: {
-    height: responsiveVerticalPortion(224), 
+    height: responsiveVerticalPortion(224),
     backgroundColor: Colors.white,
     marginTop: DEVICE_SIZE.HEIGHT - responsiveVerticalPortion(224),
   },

@@ -232,7 +232,7 @@ export const styles = StyleSheet.create({
   },
   financeText: {
     width: responsivePortion(49),
-    height: responsivePortion(18),
+    height: responsivePortion(16),
   },
   giftButton: {
     height: responsivePortion(32),
@@ -328,5 +328,20 @@ export const styles = StyleSheet.create({
     height: responsiveVerticalPortion(30),
     top: responsiveVerticalPortion(55),
     right: responsivePortion(46),
+  },
+
+  // WebView styles
+  webview: {
+    width: DEVICE_SIZE.WIDTH,
+    height: '100%',
+  },
+  webviewLoading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

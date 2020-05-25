@@ -31,7 +31,6 @@ import Colors from '@config/colors';
 
 const dummyImg = require('@assets/images/dummy1.png');
 const dummyImgHome = require('@assets/images/dummy.png');
-const financeText = require('@assets/images/finance.png');
 const courseCard = require('@assets/images/course-card.png');
 const jane = require('@assets/profile/jane.png');
 const cliff = require('@assets/profile/cliff.png');
@@ -583,7 +582,7 @@ class CourseDetails extends React.Component {
           {!isPurchased && (
             <View style={{marginHorizontal: responsivePortion(16)}}>
               <Image
-                source={financeText}
+                source={ICONS.FINANCECOE}
                 resizeMode="contain"
                 style={styles.financeText}
               />
@@ -1334,7 +1333,7 @@ class CourseDetails extends React.Component {
                 <CourseItem
                   item={item}
                   index={index}
-                  onPress={this.onPressCourse}
+                  onPress={this.onPressStartCourse}
                 />
               );
             }}

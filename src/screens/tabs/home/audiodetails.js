@@ -32,7 +32,6 @@ import Colors from '@config/colors';
 
 const dummyImg = require('@assets/images/dummy1.png');
 const dummyImgHome = require('@assets/images/dummy.png');
-const financeText = require('@assets/images/finance.png');
 const courseCard = require('@assets/images/course-card.png');
 const jane = require('@assets/profile/jane.png');
 const cliff = require('@assets/profile/cliff.png');
@@ -464,6 +463,11 @@ class AudioDetails extends React.Component {
     navigation.navigate('CourseOverview');
   };
 
+  onPressStartCourse = () => {
+    const {navigation} = this.props;
+    navigation.navigate('CourseOverview');
+  };
+
   onPurchaseCourse = () => {
     this.setState({isPurchased: true, modalVisible: false});
   };
@@ -566,7 +570,7 @@ class AudioDetails extends React.Component {
           {!isPurchased && (
             <View style={{marginHorizontal: responsivePortion(16)}}>
               <Image
-                source={financeText}
+                source={ICONS.FINANCECOE}
                 resizeMode="contain"
                 style={styles.financeText}
               />
@@ -1315,7 +1319,7 @@ class AudioDetails extends React.Component {
                 <CourseItem
                   item={item}
                   index={index}
-                  onPress={this.onPressCourse}
+                  onPress={this.onPressStartCourse}
                 />
               );
             }}
