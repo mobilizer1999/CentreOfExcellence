@@ -7,6 +7,7 @@ import {
   Image,
   Text,
   TouchableHighlight,
+  Platform,
 } from 'react-native';
 import {BaseView} from '@components/Base';
 import HeaderView from '@components/HeaderView';
@@ -606,6 +607,9 @@ class CourseProgress extends React.Component {
                               styles.button,
                               {
                                 height: responsivePortion(40),
+                                marginTop: Platform.isPad
+                                  ? responsivePortion(20)
+                                  : responsivePortion(15),
                                 backgroundColor:
                                   part.progress === 100 ||
                                   (index !== 0 &&

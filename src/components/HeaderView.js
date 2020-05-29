@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: (DEVICE_SIZE.WIDTH - responsivePortion(60)) / 2,
     width: responsivePortion(60),
-    height: responsivePortion(40),
+    height: responsiveVerticalPortion(40),
   },
   icon: {
     width: responsivePortion(16),

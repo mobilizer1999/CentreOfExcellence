@@ -1,5 +1,8 @@
 import React from 'react';
 import {View, ScrollView, Image, TouchableOpacity, Text} from 'react-native';
+import {NavigationActions, StackActions} from 'react-navigation';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import Carousel from 'react-native-snap-carousel';
 import {BaseView} from '@components/Base';
 import HeaderView from '@components/HeaderView';
@@ -14,6 +17,7 @@ import {
 } from '@config/constants';
 import Colors from '@config/colors';
 import ICONS from '@config/icons';
+import {registerToken} from '@store/actions/auth';
 
 const courseImg = require('@assets/images/mycourse.png');
 const courseCard = require('@assets/images/course-card.png');
@@ -90,6 +94,17 @@ class Accounts extends React.Component {
     navigation.navigate('Course', {course: item});
   };
 
+  onPressSignOut = () => {
+    const {navigation, registerToken} = this.props;
+    registerToken(null);
+    const routeName = 'Login';
+    const resetAction = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({routeName})],
+    });
+    navigation.dispatch(resetAction);
+  };
+
   renderImageView = () => {
     return (
       <View style={styles.courseImageView}>
@@ -108,6 +123,7 @@ class Accounts extends React.Component {
             {
               paddingHorizontal: DEVICE_SIZE.CONTENT_PADDING,
               alignItems: 'center',
+              zIndex: 5,
             },
           ]}
           activityIndicatorProps={{size: 'small'}}
@@ -134,7 +150,7 @@ class Accounts extends React.Component {
             </Text>
             <Text style={styles.slantedText}>James</Text>
           </View>
-          <View style={styles.rowView}>
+          <View style={[styles.rowView, {zIndex: 10}]}>
             <Text
               style={[
                 styles.normalText,
@@ -145,7 +161,9 @@ class Accounts extends React.Component {
               ]}>
               Not James?
             </Text>
-            <Text style={styles.signout}>Sign Out</Text>
+            <TouchableOpacity onPress={this.onPressSignOut}>
+              <Text style={styles.signout}>Sign Out</Text>
+            </TouchableOpacity>
           </View>
         </ImageView>
       </View>
@@ -241,4 +259,15 @@ class Accounts extends React.Component {
   }
 }
 
-export default Accounts;
+Accounts.propTypes = {
+  auth: PropTypes.instanceOf(Object).isRequired,
+  registerToken: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {registerToken})(Accounts);

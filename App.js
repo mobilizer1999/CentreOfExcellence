@@ -9,7 +9,11 @@
 import React from 'react';
 import {View, StatusBar, Platform, StyleSheet} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {Toast} from 'react-native-redux-toast';
 import Main from './src';
+import {store, persistor} from './src/store';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,15 +28,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar
-          translucent
-          barStyle="light-content"
-          backgroundColor="transparent"
-          hidden={false}
-        />
-        <Main />
-      </View>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <View style={styles.container}>
+            <StatusBar
+              translucent
+              barStyle="light-content"
+              backgroundColor="transparent"
+              hidden={false}
+            />
+            <Main />
+          </View>
+        </PersistGate>
+        <Toast messageStyle={styles.toast} />
+      </Provider>
     );
   }
 }
@@ -40,6 +49,9 @@ class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  toast: {
+    color: '#fff',
   },
 });
 

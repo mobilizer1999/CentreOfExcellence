@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import Colors from '@config/colors';
 import {
   DEVICE_SIZE,
@@ -9,7 +9,7 @@ import {
 
 export const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: (DEVICE_SIZE.WIDTH - DEVICE_SIZE.CONTENT_WIDTH) / 2,
+    // paddingHorizontal: (DEVICE_SIZE.WIDTH - DEVICE_SIZE.CONTENT_WIDTH) / 2,
   },
   introView: {
     marginTop: responsiveVerticalPortion(130),
@@ -17,9 +17,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   prevButton: {
+    position: 'absolute',
+    left: DEVICE_SIZE.CONTENT_PADDING,
+    top: Platform.isPad
+      ? responsiveVerticalPortion(120)
+      : responsiveVerticalPortion(115),
     width: responsivePortion(20),
+    zIndex: 3,
   },
   nextButton: {
+    position: 'absolute',
+    right: DEVICE_SIZE.CONTENT_PADDING,
+    top: Platform.isPad
+      ? responsiveVerticalPortion(120)
+      : responsiveVerticalPortion(115),
     width: responsivePortion(20),
   },
   logo: {
@@ -33,20 +44,26 @@ export const styles = StyleSheet.create({
     padding: 5,
   },
   sliderView: {
-    height: responsiveVerticalPortion(170),
+    width: DEVICE_SIZE.CONTENT_WIDTH,
+    height: Platform.isPad
+      ? responsiveVerticalPortion(210)
+      : responsiveVerticalPortion(190),
     alignItems: 'center',
     justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   title: {
     fontFamily: FONTS.main,
     fontSize: responsivePortion(24),
     fontWeight: 'bold',
-    letterSpacing: 1,
     color: Colors.white,
     textAlign: 'center',
   },
   italic: {
-    fontStyle: 'italic',
+    fontFamily: FONTS.bornreadyslanted,
+    fontSize: responsivePortion(34),
+    color: Colors.white,
+    textAlign: 'center',
   },
   description: {
     fontFamily: FONTS.main,
@@ -74,7 +91,7 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     bottom: responsiveVerticalPortion(25),
     left: (DEVICE_SIZE.WIDTH - DEVICE_SIZE.CONTENT_WIDTH) / 2,
-    width: '100%',
+    width: DEVICE_SIZE.CONTENT_WIDTH,
     height: DEVICE_SIZE.WIDTH / 9,
     flexDirection: 'row',
     justifyContent: 'center',

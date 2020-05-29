@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import TabBarButton from '@components/TabButton';
 import Colors from '@config/colors';
-import {responsiveVerticalPortion} from '@config/constants';
+import {responsiveVerticalPortion, DEVICE_SIZE} from '@config/constants';
 
 import Welcome from '@screens/welcome';
 import SignUp from '@screens/signup';
@@ -166,6 +166,7 @@ const DrawerNavigator = createDrawerNavigator(
     contentComponent: Drawer,
     drawerBackgroundColor: Colors.background,
     drawerType: 'front',
+    drawerWidth: (DEVICE_SIZE.WIDTH * 2) / 3,
   },
 );
 

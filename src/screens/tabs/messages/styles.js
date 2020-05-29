@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import Colors from '@config/colors';
 import {
   DEVICE_SIZE,
@@ -116,7 +116,7 @@ export const styles = StyleSheet.create({
     marginTop: responsivePortion(12),
   },
   messageItem: {
-    height: responsiveVerticalPortion(199),
+    height: Platform.isPad ? responsivePortion(199) : responsiveVerticalPortion(199),
     borderRadius: responsivePortion(5),
     borderWidth: 1,
     borderColor: Colors.disabled,

@@ -13,6 +13,7 @@ const love = require('@assets/icons/love.png');
 const lovefill = require('@assets/icons/love-fill.png');
 const close = require('@assets/icons/cancel.png');
 const eye = require('@assets/icons/eye.png');
+const eye_hide = require('@assets/icons/eye-hide.png');
 const document = require('@assets/icons/document.png');
 const melody = require('@assets/icons/melody.png');
 const timer = require('@assets/icons/timer.png');
@@ -121,6 +122,7 @@ export default ICONS = {
   USER_TAB: user_tab,
   CLOSE: close,
   EYE: eye,
+  EYE_HIDE: eye_hide,
   CERTIFIED: certified,
   ACCREDITED: accredited,
   DOCUMENT: document,

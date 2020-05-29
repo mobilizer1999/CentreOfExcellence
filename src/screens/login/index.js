@@ -9,9 +9,13 @@ import {
   TextInput,
   Animated,
 } from 'react-native';
+import {NavigationActions, StackActions} from 'react-navigation';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {BaseView} from '@components/Base';
 import {LogoView} from '@components/Logo';
 import InputForm from '@components/InputForm';
+import {LoadingView} from '@components/Loading';
 import Colors from '@config/colors';
 import {
   responsiveVerticalPortion,
@@ -19,11 +23,12 @@ import {
   DEVICE_SIZE,
 } from '@config/constants';
 import {styles} from './styles';
+import ICONS from '@config/icons';
+import AjaxHelper from '@config/network';
+import {emailValidation} from '@config/global';
+import {showErrorToast, registerToken} from '@store/actions/auth';
 
 const {State: TextInputState} = TextInput;
-const fbIcon = require('@assets/icons/facebook.png');
-const googleIcon = require('@assets/icons/google.png');
-const eyeIcon = require('@assets/icons/eye.png');
 
 class Login extends React.Component {
   constructor(props) {
@@ -31,11 +36,12 @@ class Login extends React.Component {
     this.state = {
       step: 0,
       inputValues: {
-        email: '',
-        passwd: '',
+        email: 'edwin@soapmedia.co.uk',
+        passwd: 'asda123',
       },
       shift: new Animated.Value(0),
       showPass: false,
+      loading: false,
     };
   }
 
@@ -48,6 +54,11 @@ class Login extends React.Component {
       'keyboardDidHide',
       this.handleKeyboardDidHide,
     );
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidHideSub.remove();
+    this.keyboardDidShowSub.remove();
   }
 
   handleKeyboardDidShow = (event) => {
@@ -107,14 +118,56 @@ class Login extends React.Component {
     navigation.navigate('SignUp');
   };
 
+  onSuccess = (response) => {
+    this.setState({loading: false}, () => {
+      const {navigation, registerToken, showErrorToast} = this.props;
+      if (response.token) {
+        registerToken(response.token);
+        const routeName = 'Home';
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({routeName})],
+        });
+        navigation.dispatch(resetAction);
+      } else if (response.code) {
+        showErrorToast(response.message);
+      }
+    });
+  };
+
+  onError = (error) => {
+    console.log(error);
+    const {showErrorToast} = this.props;
+    this.setState({loading: false}, () => {
+      showErrorToast('Something went wrong.');
+    });
+  };
+
   onPressLogin = () => {
-    const {navigation} = this.props;
-    navigation.navigate('Home');
+    const {inputValues} = this.state;
+    const body = {
+      email: inputValues.email,
+      password: inputValues.passwd,
+    };
+    this.setState(
+      {
+        loading: true,
+      },
+      () => {
+        AjaxHelper.postData(
+          'shop-api/login',
+          body,
+          this.onSuccess,
+          this.onError,
+        );
+      },
+    );
   };
 
   renderEmailPassword = () => {
     const {inputValues, showPass} = this.state;
-    const filledOut = inputValues.email !== '' && inputValues.passwd !== '';
+    const filledOut =
+      emailValidation(inputValues.email) && inputValues.passwd !== '';
     return (
       <View>
         <InputForm
@@ -137,8 +190,8 @@ class Login extends React.Component {
           name="passwd"
           value={inputValues.passwd}
           secureTextEntry={!showPass}
-          icon={eyeIcon}
-          iconTintColor={Colors.black}
+          icon={showPass ? ICONS.EYE : ICONS.EYE_HIDE}
+          iconTintColor={showPass ? Colors.blue : Colors.black}
           onPressIcon={this.onShowHidePass}
           onChange={this.onChange}
         />
@@ -156,9 +209,10 @@ class Login extends React.Component {
   };
 
   render() {
-    const {step, shift} = this.state;
+    const {step, shift, loading} = this.state;
     return (
       <BaseView style={{transform: [{translateY: shift}]}}>
+        <LoadingView visible={loading} />
         <LogoView />
         <View style={styles.titleView}>
           <Text style={styles.title}>Login</Text>
@@ -182,7 +236,7 @@ class Login extends React.Component {
               ]}
               onPress={this.onPressSignIn}>
               <Image
-                source={fbIcon}
+                source={ICONS.FBICON}
                 resizeMode="contain"
                 style={[
                   styles.icon,
@@ -204,7 +258,7 @@ class Login extends React.Component {
               ]}
               onPress={this.onPressLogin}>
               <Image
-                source={googleIcon}
+                source={ICONS.GOOGLEICON}
                 resizeMode="contain"
                 style={styles.icon}
               />
@@ -276,4 +330,16 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+Login.propTypes = {
+  auth: PropTypes.instanceOf(Object).isRequired,
+  registerToken: PropTypes.func.isRequired,
+  showErrorToast: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth,
+  };
+};
+
+export default connect(mapStateToProps, {showErrorToast, registerToken})(Login);

@@ -91,11 +91,21 @@ class Intro extends React.Component {
     return (
       <View key={index} style={styles.sliderView}>
         <Image source={item.img} resizeMode="contain" style={styles.logo} />
-        <Text style={styles.title}>
-          {index !== 0 && <Text style={styles.italic}>{`${item.name}`}</Text>}
-          {item.title}
-          {index === 0 && <Text style={styles.italic}>{`, ${item.name}`}</Text>}
-        </Text>
+        {index === 0 ? (
+          <Text
+            style={{
+              textAlign: 'center',
+              paddingHorizontal: responsivePortion(20),
+            }}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.italic}>{`, ${item.name}`}</Text>
+          </Text>
+        ) : (
+          <Text style={{textAlign: 'center'}}>
+            <Text style={styles.italic}>{`${item.name} `}</Text>
+            <Text style={styles.title}>{item.title}</Text>
+          </Text>
+        )}
         <Text style={styles.description}>{item.description}</Text>
       </View>
     );
@@ -123,8 +133,8 @@ class Intro extends React.Component {
             data={introSlider}
             renderItem={this.renderSlider}
             onSnapToItem={(index) => this.setState({slideIndex: index})}
-            sliderWidth={DEVICE_SIZE.CONTENT_WIDTH - responsivePortion(40)}
-            itemWidth={DEVICE_SIZE.CONTENT_WIDTH - responsivePortion(40)}
+            sliderWidth={DEVICE_SIZE.WIDTH}
+            itemWidth={DEVICE_SIZE.WIDTH}
             inactiveSlideScale={1.0}
             activeSlideAlignment="start"
             autoplay={false}

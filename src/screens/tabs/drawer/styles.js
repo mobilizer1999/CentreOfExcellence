@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
   },
   logo: {
     width: responsivePortion(45),
-    height: responsivePortion(40),
+    height: responsiveVerticalPortion(40),
   },
   scrollView: {
     flex: 1,

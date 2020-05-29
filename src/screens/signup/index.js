@@ -55,6 +55,11 @@ class SignUp extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.keyboardDidHideSub.remove();
+    this.keyboardDidShowSub.remove();
+  }
+
   handleKeyboardDidShow = (event) => {
     const windowHeight = DEVICE_SIZE.HEIGHT;
     const keyboardHeight = event.endCoordinates.height;
